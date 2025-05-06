@@ -155,9 +155,28 @@
       
 
 
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/">
+                -Deepseek
+                <div class="category-count">1</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
 
     
       
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">-Deepseek</a></li></ul>
+    </div>
+  </div>
+
 
     
       
@@ -166,9 +185,9 @@
       <h3 class="widget-title">最新文章</h3>
       <ul>
         
-          <a class="recent-link" href="/2025/05/06/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="" >
+          <a class="recent-link" href="/2025/05/06/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="适用于Linux系统卸载Ollama的详细步骤" >
             <div class="recent-link-text">
-              (no title)
+              适用于Linux系统卸载Ollama的详细步骤
             </div>
           </a>
         
@@ -202,7 +221,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/05/06/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/">无标题</a>
+        <a class="p-name article-title" href="/2025/05/06/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/">适用于Linux系统卸载Ollama的详细步骤</a>
       </h1>
     
   
@@ -215,24 +234,24 @@
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-    未分类 
+  <a class="meta-cate-link" href="/categories/Deepseek/">-Deepseek</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            558 词 
+            490 词 
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deepseek/" rel="tag">-Deepseek</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
             
-              12345title: 适用于Linux系统卸载Ollama的详细步骤tags:	- Deepseekcategories:	- Deepseek
-
-适用于Linux系统卸载Ollama的详细步骤1.停止并禁用Ollama服务12#停止服务suda systemctl stop ollama
+              适用于Linux系统卸载Ollama的详细步骤1.停止并禁用Ollama服务12#停止服务sudo systemctl stop ollama
 
 12#禁用开机自启sudo systemctl disable ollama
 
@@ -244,7 +263,11 @@
 
 3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
 
-4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd...
+4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
+
+5.验证卸载12#检查进程是否仍在运行ps aux | grep ollama
+
+12#检查二进...
             
           </div>
         
