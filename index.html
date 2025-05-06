@@ -173,7 +173,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li></ul>
     </div>
   </div>
 
@@ -244,7 +244,7 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -255,19 +255,20 @@
 
 12#禁用开机自启sudo systemctl disable ollama
 
+
 2.删除Ollama主程序根据官方方式选择对应操作：如果通过官方脚本安装（默认途径）12#删除二进制文件sudo rm -f /usr/local/bin/ollama
 
 12#删除服务配置文件sudo rm -rf/etc/systemd/system/ollama.service
 
 通过手动下载二进制安装12#找到你的安装路径(例如 ~/bin/ollama)sudo rm -f/path/to/your/ollama
 
-3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
 
+3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
 4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
 
 5.验证卸载12#检查进程是否仍在运行ps aux | grep ollama
 
-12#检查二进...
+12#检查二...
             
           </div>
         
