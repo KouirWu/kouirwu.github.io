@@ -221,7 +221,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            493 词 
+            561 词 
           </div>
         </div>
         
@@ -230,7 +230,9 @@
         
           <div class="truncate-text">
             
-              适用于Linux系统卸载Ollama的详细步骤1.停止并禁用Ollama服务12345#停止服务suda systemctl stop ollama#禁用开机自启sudo systemctl disable ollama
+              12345title: 适用于Linux系统卸载Ollama的详细步骤tags:	- Deepseekcategories:	- Deepseek
+
+适用于Linux系统卸载Ollama的详细步骤1.停止并禁用Ollama服务12345#停止服务suda systemctl stop ollama#禁用开机自启sudo systemctl disable ollama
 
 2.删除Ollama主程序根据官方方式选择对应操作：如果通过官方脚本安装（默认途径）12345#删除二进制文件sudo rm -f /usr/local/bin/ollama#删除服务配置文件sudo rm -rf/etc/systemd/system/ollama.service
 
@@ -238,9 +240,7 @@
 
 3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
 
-4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
-
-5.验证卸载12345#检查进程是否仍在运行ps aux | grep ollama#检查二进制文件...
+4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/s...
             
           </div>
         
