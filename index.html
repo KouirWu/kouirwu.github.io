@@ -270,8 +270,10 @@
               Linux部署OIlama解决cherry studio监听问题
 通过调用systemctl edit ollama.service编辑 systemd 服务。这将打开一个编辑器。这边可以直接通过vim /etc/systemd/system/ollama.service，打开编辑。
 
+
+
 ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 systemd 的 service 文件&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;ollama.service
-12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;PA...
+12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;...
             
           </div>
         
@@ -347,20 +349,19 @@ ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 sy
 
 12#禁用开机自启sudo systemctl disable ollama
 
-
 2.删除Ollama主程序根据官方方式选择对应操作：如果通过官方脚本安装（默认途径）12#删除二进制文件sudo rm -f /usr/local/bin/ollama
 
 12#删除服务配置文件sudo rm -rf/etc/systemd/system/ollama.service
 
 通过手动下载二进制安装12#找到你的安装路径(例如 ~/bin/ollama)sudo rm -f/path/to/your/ollama
 
-
 3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
+
 4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
 
 5.验证卸载12#检查进程是否仍在运行ps aux | grep ollama
 
-12#检查二...
+12#检查二进...
             
           </div>
         
