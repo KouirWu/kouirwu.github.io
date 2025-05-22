@@ -159,6 +159,21 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/">
+                Deepseek
+                <div class="category-count">2</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/">
+                Linux
+                <div class="category-count">2</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
+                Ollama
+                <div class="category-count">2</div>
+            </a>
+        </div></div></div></div>
             <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
                 前端开发
                 <div class="category-count">1</div>
@@ -183,22 +198,7 @@
                 环境配置
                 <div class="category-count">1</div>
             </a>
-        </div></div>
-            <a class="category-link" href="/categories/Deepseek/">
-                Deepseek
-                <div class="category-count">2</div>
-            </a>
-        <div class="children"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/">
-                Linux
-                <div class="category-count">2</div>
-            </a>
-        <div class="children"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
-                Ollama
-                <div class="category-count">2</div>
-            </a>
-        </div></div></div></div></div>
+        </div></div></div>
     </div>
   </div>
 
@@ -232,15 +232,15 @@
             </div>
           </a>
         
-          <a class="recent-link" href="/2025/05/22/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="适用于Linux系统卸载Ollama的详细步骤" >
-            <div class="recent-link-text">
-              适用于Linux系统卸载Ollama的详细步骤
-            </div>
-          </a>
-        
           <a class="recent-link" href="/2025/05/22/Linux%E9%83%A8%E7%BD%B2OIlama%E8%A7%A3%E5%86%B3cherry%20studio%E7%9B%91%E5%90%AC%E9%97%AE%E9%A2%98/" title="Linux部署Ollama解决cherry studio监听问题" >
             <div class="recent-link-text">
               Linux部署Ollama解决cherry studio监听问题
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/05/22/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="适用于Linux系统卸载Ollama的详细步骤" >
+            <div class="recent-link-text">
+              适用于Linux系统卸载Ollama的详细步骤
             </div>
           </a>
         
@@ -435,6 +435,84 @@ Linux系统安装步骤:
    
 
 
+<article id="post-Linux部署OIlama解决cherry studio监听问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/05/22/Linux%E9%83%A8%E7%BD%B2OIlama%E8%A7%A3%E5%86%B3cherry%20studio%E7%9B%91%E5%90%AC%E9%97%AE%E9%A2%98/">Linux部署Ollama解决cherry studio监听问题</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-05-22T02:24:58.387Z" itemprop="datePublished">2025-05-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Deepseek/">Deepseek</a>><a class="meta-cate-link" href="/categories/Deepseek/Linux/">Linux</a>><a class="meta-cate-link" href="/categories/Deepseek/Linux/Ollama/">Ollama</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            692 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ollama/" rel="tag">Ollama</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Linux部署OIlama解决cherry studio监听问题
+通过调用systemctl edit ollama.service编辑 systemd 服务。这将打开一个编辑器。这边可以直接通过vim /etc/systemd/system/ollama.service，打开编辑。
+
+
+
+ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 systemd 的 service 文件&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;ollama.service
+12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/05/22/Linux%E9%83%A8%E7%BD%B2OIlama%E8%A7%A3%E5%86%B3cherry%20studio%E7%9B%91%E5%90%AC%E9%97%AE%E9%A2%98/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-适用于Linux系统卸载Ollama的详细步骤" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -505,84 +583,6 @@ Linux系统安装步骤:
     <a class="right-panel  non-pic  "
       
       href="/2025/05/22/%E9%80%82%E7%94%A8%E4%BA%8ELinux%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BDOllama%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Linux部署OIlama解决cherry studio监听问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/05/22/Linux%E9%83%A8%E7%BD%B2OIlama%E8%A7%A3%E5%86%B3cherry%20studio%E7%9B%91%E5%90%AC%E9%97%AE%E9%A2%98/">Linux部署Ollama解决cherry studio监听问题</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-05-22T02:24:58.387Z" itemprop="datePublished">2025-05-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/Deepseek/">Deepseek</a>><a class="meta-cate-link" href="/categories/Deepseek/Linux/">Linux</a>><a class="meta-cate-link" href="/categories/Deepseek/Linux/Ollama/">Ollama</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            692 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ollama/" rel="tag">Ollama</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Linux部署OIlama解决cherry studio监听问题
-通过调用systemctl edit ollama.service编辑 systemd 服务。这将打开一个编辑器。这边可以直接通过vim /etc/systemd/system/ollama.service，打开编辑。
-
-
-
-ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 systemd 的 service 文件&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;ollama.service
-12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/05/22/Linux%E9%83%A8%E7%BD%B2OIlama%E8%A7%A3%E5%86%B3cherry%20studio%E7%9B%91%E5%90%AC%E9%97%AE%E9%A2%98/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
