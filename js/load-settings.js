@@ -2,6 +2,10 @@ function loadSettings() {
     let theme = localStorage.getItem('theme');
     if (theme) {
         document.documentElement.setAttribute('theme', theme);
+    } else {
+        // 设置初始状态为白天模式
+        document.documentElement.setAttribute('theme', 'light');
+        localStorage.setItem('theme', 'light');
     }
 
     let showBanner = localStorage.getItem("showBanner");
