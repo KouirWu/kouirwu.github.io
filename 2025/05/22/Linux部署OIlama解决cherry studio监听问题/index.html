@@ -48,6 +48,7 @@
     <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
   
   
+  
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 7.3.0"></head>
@@ -160,8 +161,6 @@
   <div class="sticky">
     
       
-
-
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">分类</h3>
@@ -170,12 +169,12 @@
                 前端开发
                 <div class="category-count">1</div>
             </a>
-        <div class="children"><div class="category-box">
+        <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/">
                 Vue3
                 <div class="category-count">1</div>
             </a>
-        <div class="children"><div class="category-box">
+        <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E5%B0%8F%E5%85%94%E9%B2%9C/">
                 小兔鲜
                 <div class="category-count">1</div>
@@ -185,12 +184,12 @@
                 Deepseek
                 <div class="category-count">2</div>
             </a>
-        <div class="children"><div class="category-box">
+        <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/Deepseek/Linux/">
                 Linux
                 <div class="category-count">2</div>
             </a>
-        <div class="children"><div class="category-box">
+        <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
                 Ollama
                 <div class="category-count">2</div>
@@ -200,7 +199,7 @@
                 机器学习
                 <div class="category-count">1</div>
             </a>
-        <div class="children"><div class="category-box">
+        <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
                 环境配置
                 <div class="category-count">1</div>
@@ -208,6 +207,25 @@
         </div></div></div>
     </div>
   </div>
+  <script>
+    document.querySelectorAll('.category-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const children = this.nextElementSibling;
+        if (children && children.classList.contains('children')) {
+          e.preventDefault();
+          if (children.style.display === 'none') {
+            children.style.display = 'block';
+          } else {
+            children.style.display = 'none';
+          }
+        }
+      });
+    });
+    // 设置初始状态为折叠状态
+    document.querySelectorAll('.children').forEach(children => {
+      children.style.display = 'none';
+    });
+  </script>
 
 
     
@@ -360,6 +378,7 @@
 
   
 </article>
+
 
 
 
