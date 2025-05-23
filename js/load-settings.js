@@ -3,9 +3,9 @@ function loadSettings() {
     if (theme) {
         document.documentElement.setAttribute('theme', theme);
     } else {
-        // 设置初始状态为白天模式
-        document.documentElement.setAttribute('theme', 'light');
-        localStorage.setItem('theme', 'light');
+        // 设置初始状态为黑夜模式
+        document.documentElement.setAttribute('theme', 'dark');
+        localStorage.setItem('theme', 'dark');
     }
 
     let showBanner = localStorage.getItem("showBanner");
