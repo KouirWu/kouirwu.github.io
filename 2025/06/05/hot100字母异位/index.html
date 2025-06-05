@@ -14,18 +14,25 @@
   
 
   
-  <title>标签: Kaggle | 季禾子寒舍</title>
+  <title>LeetCode Hot 100 - 49. 字母异位词分组 | 季禾子寒舍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="季禾子寒舍">
-<meta property="og:url" content="https://kouirwu.github.io/tags/Kaggle/index.html">
+  <meta name="description" content="49. 字母异位词分组 题目链接：49. 字母异位词分组  题目描述给你一个字符串数组 strs，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。 字母异位词 是由重新排列源单词的所有字母得到的一个新单词。 题目要求给定一个字符串数组 strs，将字母异位词（Anagram）组合在一起，并返回这些组合后的列表。   字母异位词（Anagram）定义 定义：两个字符串如果包含相同的字母（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Hot 100 - 49. 字母异位词分组">
+<meta property="og:url" content="https://kouirwu.github.io/2025/06/05/hot100%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D/index.html">
 <meta property="og:site_name" content="季禾子寒舍">
+<meta property="og:description" content="49. 字母异位词分组 题目链接：49. 字母异位词分组  题目描述给你一个字符串数组 strs，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。 字母异位词 是由重新排列源单词的所有字母得到的一个新单词。 题目要求给定一个字符串数组 strs，将字母异位词（Anagram）组合在一起，并返回这些组合后的列表。   字母异位词（Anagram）定义 定义：两个字符串如果包含相同的字母（">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-05T03:47:10.000Z">
+<meta property="article:modified_time" content="2025-06-05T03:49:23.345Z">
 <meta property="article:author" content="Kouir Wu">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="季禾子寒舍" type="application/atom+xml">
@@ -314,44 +321,272 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">归档</h1>
-      </div>    
+
+<article id="post-hot100字母异位" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        LeetCode Hot 100 - 49. 字母异位词分组
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-06-05T03:47:10.000Z" itemprop="datePublished">2025-06-05</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/leetcode/">leetcode</a>><a class="meta-cate-link" href="/categories/leetcode/hot100/">hot100</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.4k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="49-字母异位词分组"><a href="#49-字母异位词分组" class="headerlink" title="49. 字母异位词分组"></a>49. 字母异位词分组</h1><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/group-anagrams/">49. 字母异位词分组</a></p>
+</blockquote>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串数组 <code>strs</code>，请你将 <strong>字母异位词</strong> 组合在一起。可以按任意顺序返回结果列表。</p>
+<p><strong>字母异位词</strong> 是由重新排列源单词的所有字母得到的一个新单词。</p>
+<h3 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a><strong>题目要求</strong></h3><p>给定一个字符串数组 <code>strs</code>，<strong>将字母异位词（Anagram）组合在一起</strong>，并返回这些组合后的列表。  </p>
+<h3 id="字母异位词（Anagram）定义"><a href="#字母异位词（Anagram）定义" class="headerlink" title="字母异位词（Anagram）定义"></a><strong>字母异位词（Anagram）定义</strong></h3><ul>
+<li><strong>定义</strong>：两个字符串如果<strong>包含相同的字母（顺序无关）</strong>，则互为字母异位词。  </li>
+<li><strong>示例</strong>：<ul>
+<li><code>&quot;eat&quot;</code> 和 <code>&quot;tea&quot;</code> 是字母异位词，因为它们的字母顺序不同但组成相同。</li>
+<li><code>&quot;rat&quot;</code> 和 <code>&quot;bat&quot;</code> 不是字母异位词，因为它们包含的字母不同。</li>
+</ul>
+</li>
+</ul>
+<h3 id="输入输出示例"><a href="#输入输出示例" class="headerlink" title="输入输出示例"></a><strong>输入输出示例</strong></h3><p><strong>输入</strong>：<code>strs = [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]</code><br><strong>输出</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tea&quot;</span>, <span class="string">&quot;ate&quot;</span>],</span><br><span class="line">  [<span class="string">&quot;tan&quot;</span>, <span class="string">&quot;nat&quot;</span>],</span><br><span class="line">  [<span class="string">&quot;bat&quot;</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><h3 id="核心思想："><a href="#核心思想：" class="headerlink" title="核心思想："></a><strong>核心思想</strong>：</h3><ul>
+<li><p><strong>字母异位词在排序后会变成相同的字符串</strong>  </p>
+<ul>
+<li><code>&quot;eat&quot;</code>、<code>&quot;tea&quot;</code>、<code>&quot;ate&quot;</code> 排序后都变成 <code>&quot;aet&quot;</code>  </li>
+<li><code>&quot;tan&quot;</code>、<code>&quot;nat&quot;</code> 排序后变成 <code>&quot;ant&quot;</code>  </li>
+<li><code>&quot;bat&quot;</code> 保持不变 <code>&quot;abt&quot;</code>（<code>&quot;bat&quot;</code> 是唯一一个）</li>
+</ul>
+</li>
+<li><p><strong>利用哈希表（字典）分组存储</strong>：</p>
+<ul>
+<li>使用 <strong>排序后的字符串</strong> 作为 <code>key</code>  </li>
+<li><strong>相同 <code>key</code> 的字符串分组存储</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤</strong>：</h3><ol>
+<li><strong>初始化一个 <code>defaultdict(list)</code>，用于存储分组结果</strong><br>(<code>defaultdict</code> 可以避免 <code>KeyError</code>，如果 <code>key</code> 不存在会自动创建空列表)  </li>
+<li><strong>遍历每个字符串 <code>s</code></strong>：<ul>
+<li><strong>排序 <code>s</code> 得到一个标准化的 <code>key</code></strong>  </li>
+<li><strong>把 <code>s</code> 添加到 <code>d[key]</code> 的分组里</strong></li>
+</ul>
+</li>
+<li><strong>最后返回字典的所有 <code>values()</code>，就是分组后的结果</strong></li>
+</ol>
+<hr>
+<h2 id="代码详细解释"><a href="#代码详细解释" class="headerlink" title="代码详细解释"></a><strong>代码详细解释</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">groupAnagrams</span>(<span class="params">self, strs: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">str</span>]]:</span><br><span class="line">        d = defaultdict(<span class="built_in">list</span>)  <span class="comment"># 初始化字典，key 是排序后的字符串，value 是原字符串列表</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:  <span class="comment"># 遍历每个字符串</span></span><br><span class="line">            sorted_s = <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">sorted</span>(s))  <span class="comment"># 排序后作为 key</span></span><br><span class="line">            d[sorted_s].append(s)  <span class="comment"># 存入对应的 group</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">list</span>(d.values())  <span class="comment"># 返回所有分组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="逐行解析："><a href="#逐行解析：" class="headerlink" title="逐行解析："></a><strong>逐行解析</strong>：</h3><ol>
+<li><p><strong><code>d = defaultdict(list)</code></strong>  </p>
+<ul>
+<li><strong>初始化为一个空字典</strong>，键 <code>(key)</code> 是<strong>排序后的字符串</strong>，值 <code>(value)</code> 是一个<strong>列表</strong>（用于存同一分组的所有字符串）。</li>
+</ul>
+</li>
+<li><p><strong><code>for s in strs</code></strong>  </p>
+<ul>
+<li>遍历输入列表 <code>strs</code> 里的每一个字符串 <code>s</code>。</li>
+</ul>
+</li>
+<li><p><strong><code>sorted_s = &#39;&#39;.join(sorted(s))</code></strong>  </p>
+<ul>
+<li><code>sorted(s)</code> 把字符串 <code>s</code> <strong>转换成排序后的字符列表</strong>，例如：<ul>
+<li><code>sorted(&quot;tea&quot;)</code> → <code>[&#39;a&#39;, &#39;e&#39;, &#39;t&#39;]</code></li>
+<li><code>&#39;&#39;.join([&#39;a&#39;, &#39;e&#39;, &#39;t&#39;])</code> → <code>&quot;aet&quot;</code>（还原成一个标准化的字符串）</li>
+</ul>
+</li>
+<li><strong>为什么排序？</strong><br>→ 因为异位词排序后会一致，可以直接比较！<br>→ 比如 <code>&quot;eat&quot;</code>、<code>&quot;tea&quot;</code>、<code>&quot;ate&quot;</code> 都会变成 <code>&quot;aet&quot;</code>，它们就可以被正确分组。</li>
+</ul>
+</li>
+<li><p><strong><code>d[sorted_s].append(s)</code></strong>  </p>
+<ul>
+<li><strong>把原始字符串 <code>s</code> 存进对应的分组里</strong>  <ul>
+<li>如果 <code>sorted_s</code> 已经存在，则直接 <code>append</code>。  </li>
+<li>如果 <code>sorted_s</code> 不存在，<code>defaultdict</code> 自动初始化一个空列表，再添加 <code>s</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong><code>return list(d.values())</code></strong>  </p>
+<ul>
+<li><strong><code>d.values()</code> 返回所有分组（是一个列表的集合）</strong>，但需要转换成 <code>list</code> 类型（Python 3 中 <code>dict_values</code> 不是直接可索引的）。  </li>
+<li>最终结果类似：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   [<span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tea&quot;</span>, <span class="string">&quot;ate&quot;</span>],</span><br><span class="line">   [<span class="string">&quot;tan&quot;</span>, <span class="string">&quot;nat&quot;</span>],</span><br><span class="line">   [<span class="string">&quot;bat&quot;</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a><strong>时间复杂度分析</strong></h2><ul>
+<li><strong>排序每个字符串</strong> 🔄 → <code>O(N * K log K)</code> （其中 <code>N</code> 是 <code>strs</code> 的长度，<code>K</code> 是最大字符串长度）</li>
+<li><strong>哈希表查存操作</strong> 🗃️ → <code>O(N)</code>（每个字符串存一次）</li>
+<li><strong>总时间复杂度</strong>：<code>O(N * K log K)</code><br>（优于 <code>O(N^2)</code> 的暴力解法）</li>
+</ul>
+<hr>
+<h2 id="对比其他方法"><a href="#对比其他方法" class="headerlink" title="对比其他方法"></a><strong>对比其他方法</strong></h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>排序 + 哈希表</strong>（当前方法）</td>
+<td><code>O(N * K log K)</code></td>
+<td><code>O(N * K)</code></td>
+<td><strong>最优解</strong></td>
+</tr>
+<tr>
+<td><strong>暴力法（比较每个字符串）</strong></td>
+<td><code>O(N^2 * K)</code></td>
+<td><code>O(N * K)</code></td>
+<td>不推荐（太慢）</td>
+</tr>
+<tr>
+<td><strong>使用字符计数作为 <code>key</code></strong></td>
+<td><code>O(N * K)</code></td>
+<td><code>O(N * K)</code></td>
+<td>适用于字符集较小</td>
+</tr>
+</tbody></table>
+<p>其中，<strong>字符计数方法</strong> 可以优化掉排序步骤，但代码会稍复杂：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">groupAnagrams</span>(<span class="params">strs</span>):</span><br><span class="line">    d = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">        count = [<span class="number">0</span>] * <span class="number">26</span>  <span class="comment"># 26 字母计数器</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            count[<span class="built_in">ord</span>(c) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] += <span class="number">1</span></span><br><span class="line">        d[<span class="built_in">tuple</span>(count)].append(s)  <span class="comment"># tuple 才能做 key</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(d.values())</span><br></pre></td></tr></table></figure>
+<p><strong>适用场景</strong>：如果字符串很长（排序比计数慢），这个方法可能更优。</p>
+<hr>
+<h2 id="代码运行示例"><a href="#代码运行示例" class="headerlink" title="代码运行示例"></a><strong>代码运行示例</strong></h2><p><strong>输入</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strs = [<span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tea&quot;</span>, <span class="string">&quot;tan&quot;</span>, <span class="string">&quot;ate&quot;</span>, <span class="string">&quot;nat&quot;</span>, <span class="string">&quot;bat&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>执行过程</strong>：</p>
+<table>
+<thead>
+<tr>
+<th><code>s</code></th>
+<th><code>sorted(s)</code></th>
+<th><code>key</code></th>
+<th><code>d[key].append(s)</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&quot;eat&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>d[&quot;aet&quot;] = [&quot;eat&quot;]</code></td>
+</tr>
+<tr>
+<td><code>&quot;tea&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>d[&quot;aet&quot;] = [&quot;eat&quot;, &quot;tea&quot;]</code></td>
+</tr>
+<tr>
+<td><code>&quot;tan&quot;</code></td>
+<td><code>&quot;ant&quot;</code></td>
+<td><code>&quot;ant&quot;</code></td>
+<td><code>d[&quot;ant&quot;] = [&quot;tan&quot;]</code></td>
+</tr>
+<tr>
+<td><code>&quot;ate&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>&quot;aet&quot;</code></td>
+<td><code>d[&quot;aet&quot;] = [&quot;eat&quot;, &quot;tea&quot;, &quot;ate&quot;]</code></td>
+</tr>
+<tr>
+<td><code>&quot;nat&quot;</code></td>
+<td><code>&quot;ant&quot;</code></td>
+<td><code>&quot;ant&quot;</code></td>
+<td><code>d[&quot;ant&quot;] = [&quot;tan&quot;, &quot;nat&quot;]</code></td>
+</tr>
+<tr>
+<td><code>&quot;bat&quot;</code></td>
+<td><code>&quot;abt&quot;</code></td>
+<td><code>&quot;abt&quot;</code></td>
+<td><code>d[&quot;abt&quot;] = [&quot;bat&quot;]</code></td>
+</tr>
+</tbody></table>
+<p><strong>最终 <code>d</code> 的 <code>values()</code></strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    [<span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tea&quot;</span>, <span class="string">&quot;ate&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;tan&quot;</span>, <span class="string">&quot;nat&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;bat&quot;</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ol>
+<li><strong>排序 + 哈希表</strong> 是解决字母异位词分组的最优方法之一。（<code>O(N * K log K)</code>）</li>
+<li><code>defaultdict(list)</code> 可以方便地存储分组。</li>
+<li><strong>排序后的字符串作为 <code>key</code></strong>，保证字母异位词一定属于同一分组。</li>
+<li><strong>代码简洁高效</strong>，面试常考题，需要熟练掌握！</li>
+</ol>
+<p><strong>✅ 练习建议</strong>：试试用字符计数的方法改写代码，加深理解！**</p>
+
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2025</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">1 篇文章</div>
-        </div>
-      
-      <a class="archive-article-link" href="/2025/05/29/Kaggle-%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98/" title="Kaggle-泰坦尼克号幸存">
-        <div class="date">05-29</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    Kaggle-泰坦尼克号幸存
-                
-            </div>
-        </div>
-        <div class="tags">
-            #Kaggle #Titanic #机器学习 #数据分析
-        </div>
-      </a>
-    
+     
   </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/05/30/Trae-MCP%E9%85%8D%E7%BD%AEjson%E4%BB%A3%E7%A0%81/"
+      title="Trae AI 中的三种实用 MCP 服务器详解"
+     >
+
+    <p class="title-text">
+      
+        Trae AI 中的三种实用 MCP 服务器详解
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
