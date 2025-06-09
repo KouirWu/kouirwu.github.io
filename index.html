@@ -168,21 +168,16 @@
                 <div class="category-count">1</div>
             </a>
         </div></div>
-            <a class="category-link" href="/categories/Deepseek/">
-                Deepseek
-                <div class="category-count">2</div>
+            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                人工智能
+                <div class="category-count">1</div>
             </a>
         <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/">
-                Linux
-                <div class="category-count">2</div>
+            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/Trae-AI/">
+                Trae AI
+                <div class="category-count">1</div>
             </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
-                Ollama
-                <div class="category-count">2</div>
-            </a>
-        </div></div></div></div>
+        </div></div>
             <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
                 前端开发
                 <div class="category-count">3</div>
@@ -208,16 +203,21 @@
                 <div class="category-count">1</div>
             </a>
         </div></div></div></div></div></div>
-            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                人工智能
-                <div class="category-count">1</div>
+            <a class="category-link" href="/categories/Deepseek/">
+                Deepseek
+                <div class="category-count">2</div>
             </a>
         <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/Trae-AI/">
-                Trae AI
-                <div class="category-count">1</div>
+            <a class="category-link" href="/categories/Deepseek/Linux/">
+                Linux
+                <div class="category-count">2</div>
             </a>
-        </div></div>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
+                Ollama
+                <div class="category-count">2</div>
+            </a>
+        </div></div></div></div>
             <a class="category-link" href="/categories/leetcode/">
                 leetcode
                 <div class="category-count">4</div>
@@ -289,15 +289,15 @@
             </div>
           </a>
         
-          <a class="recent-link" href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="动手搭建大模型" >
-            <div class="recent-link-text">
-              动手搭建大模型
-            </div>
-          </a>
-        
           <a class="recent-link" href="/2025/06/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E5%AE%9E%E8%B7%B5/" title="大模型训练流程实践" >
             <div class="recent-link-text">
               大模型训练流程实践
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="动手搭建大模型" >
+            <div class="recent-link-text">
+              动手搭建大模型
             </div>
           </a>
         
@@ -400,80 +400,6 @@
    
 
 
-<article id="post-动手搭建大模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/">动手搭建大模型</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-06-09T09:03:32.000Z" itemprop="datePublished">2025-06-09</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/LLM%E5%A4%A7%E6%A8%A1%E5%9E%8B/">LLM大模型</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            63k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              动手搭建大模型5.1 动手实现一个 LLaMA2 大模型Meta（原Facebook）于2023年2月发布第一款基于Transformer结构的大型语言模型LLaMA，并于同年7月发布同系列模型LLaMA2。我们在第四章已经学习了解的了LLM，记忆如何训练LLM等等。那本小节我们就来学习，如何动手写一个LLaMA2模型。
-5.1.1 定义超参数首先我们需要定义一些超参数，这些超参数包括模型的大小、层数、头数、词嵌入维度、隐藏层维度等等。这些超参数可以根据实际情况进行调整。
-这里我们自定义一个ModelConfig类，来存储和记录我们的超参数，这里我们继承了PretrainedConfig类，这是transformers库中的参数类，我们可以通过继承这个类来方便的使用transformers库中的一些功能，也方便在后续导出Hugging Face模型。
-12345678910111213141516171819202122232425262728293031from transformers import PretrainedConfigclass ModelConfig(Pret...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
 <article id="post-大模型训练流程实践" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -533,6 +459,80 @@
     <a class="right-panel  non-pic  "
       
       href="/2025/06/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E5%AE%9E%E8%B7%B5/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-动手搭建大模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/">动手搭建大模型</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-06-09T09:03:32.000Z" itemprop="datePublished">2025-06-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/LLM%E5%A4%A7%E6%A8%A1%E5%9E%8B/">LLM大模型</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            63k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              动手搭建大模型5.1 动手实现一个 LLaMA2 大模型Meta（原Facebook）于2023年2月发布第一款基于Transformer结构的大型语言模型LLaMA，并于同年7月发布同系列模型LLaMA2。我们在第四章已经学习了解的了LLM，记忆如何训练LLM等等。那本小节我们就来学习，如何动手写一个LLaMA2模型。
+5.1.1 定义超参数首先我们需要定义一些超参数，这些超参数包括模型的大小、层数、头数、词嵌入维度、隐藏层维度等等。这些超参数可以根据实际情况进行调整。
+这里我们自定义一个ModelConfig类，来存储和记录我们的超参数，这里我们继承了PretrainedConfig类，这是transformers库中的参数类，我们可以通过继承这个类来方便的使用transformers库中的一些功能，也方便在后续导出Hugging Face模型。
+12345678910111213141516171819202122232425262728293031from transformers import PretrainedConfigclass ModelConfig(Pret...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/06/09/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
