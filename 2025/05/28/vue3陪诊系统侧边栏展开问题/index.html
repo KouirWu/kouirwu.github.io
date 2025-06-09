@@ -20,12 +20,12 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="Element Plus 菜单组件展开&#x2F;折叠问题解决方案问题描述在使用 Element Plus 的菜单组件（el-menu）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开&#x2F;折叠被点击的那个菜单项。 问题代码1234567891011121314151617181920212223&lt;template&gt;  &lt;templ">
+  <meta name="description" content="Element Plus 菜单组件展开&#x2F;折叠问题解决方案 问题描述 在使用 Element Plus 的菜单组件（el-menu）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开&#x2F;折叠被点击的那个菜单项。 问题代码 1234567891011121314151617181920212223&lt;template&gt;  &lt;template">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue3陪诊系统侧边栏展开问题解决方案">
 <meta property="og:url" content="https://kouirwu.github.io/2025/05/28/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B1%95%E5%BC%80%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="季禾子寒舍">
-<meta property="og:description" content="Element Plus 菜单组件展开&#x2F;折叠问题解决方案问题描述在使用 Element Plus 的菜单组件（el-menu）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开&#x2F;折叠被点击的那个菜单项。 问题代码1234567891011121314151617181920212223&lt;template&gt;  &lt;templ">
+<meta property="og:description" content="Element Plus 菜单组件展开&#x2F;折叠问题解决方案 问题描述 在使用 Element Plus 的菜单组件（el-menu）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开&#x2F;折叠被点击的那个菜单项。 问题代码 1234567891011121314151617181920212223&lt;template&gt;  &lt;template">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-28T02:00:00.000Z">
 <meta property="article:modified_time" content="2025-05-29T10:06:29.455Z">
@@ -167,6 +167,21 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/">
+                Deepseek
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/">
+                Linux
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
+                Ollama
+                <div class="category-count">2</div>
+            </a>
+        </div></div></div></div>
             <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
                 机器学习实战
                 <div class="category-count">1</div>
@@ -212,21 +227,6 @@
                 <div class="category-count">1</div>
             </a>
         </div></div></div></div></div></div>
-            <a class="category-link" href="/categories/Deepseek/">
-                Deepseek
-                <div class="category-count">2</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/">
-                Linux
-                <div class="category-count">2</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
-                Ollama
-                <div class="category-count">2</div>
-            </a>
-        </div></div></div></div>
             <a class="category-link" href="/categories/leetcode/">
                 leetcode
                 <div class="category-count">4</div>
@@ -375,28 +375,32 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h1 id="Element-Plus-菜单组件展开-折叠问题解决方案"><a href="#Element-Plus-菜单组件展开-折叠问题解决方案" class="headerlink" title="Element Plus 菜单组件展开&#x2F;折叠问题解决方案"></a>Element Plus 菜单组件展开&#x2F;折叠问题解决方案</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在使用 Element Plus 的菜单组件（<code>el-menu</code>）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开&#x2F;折叠被点击的那个菜单项。</p>
-<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;template v-for=&quot;(item, index) in props.menuData&quot;&gt;</span><br><span class="line">    &lt;el-menu-item </span><br><span class="line">      v-if=&quot;!item.children || item.children == 0&quot; </span><br><span class="line">      :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;</span><br><span class="line">      :key=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;&gt;</span><br><span class="line">      &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">        &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">      &lt;/el-icon&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/el-menu-item&gt;</span><br><span class="line">    &lt;el-sub-menu v-else :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;&gt;</span><br><span class="line">      &lt;template #title&gt;</span><br><span class="line">        &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">          &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">        &lt;/el-icon&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">      &lt;TreeMenu :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;</span><br><span class="line">        :menu-data=&quot;item.children&quot;/&gt;</span><br><span class="line">    &lt;/el-sub-menu&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><ol>
-<li><p><strong>模板字符串语法错误</strong>：在 Vue 模板中，<code>$&#123;&#125;</code> 语法不会生效，这导致所有菜单项的 index 值都变成了字符串 <code>&#39;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#39;</code>，而不是实际的拼接值。</p>
-</li>
-<li><p><strong>index 值重复</strong>：由于模板字符串没有正确解析，所有菜单项都获得了相同的 index 值，导致 Element Plus 无法正确区分不同的菜单项。</p>
-</li>
+          <h1 id="element-plus-菜单组件展开折叠问题解决方案">Element Plus 菜单组件展开/折叠问题解决方案</h1>
+<h2 id="问题描述">问题描述</h2>
+<p>在使用 Element Plus 的菜单组件（<code>el-menu</code>）时，遇到了一个常见的问题：点击一级菜单项时，所有的一级菜单项会同时展开或折叠，而不是只展开/折叠被点击的那个菜单项。</p>
+<h2 id="问题代码">问题代码</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;template v-for=&quot;(item, index) in props.menuData&quot;&gt;</span><br><span class="line">    &lt;el-menu-item </span><br><span class="line">      v-if=&quot;!item.children || item.children == 0&quot; </span><br><span class="line">      :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;</span><br><span class="line">      :key=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;&gt;</span><br><span class="line">      &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">        &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">      &lt;/el-icon&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/el-menu-item&gt;</span><br><span class="line">    &lt;el-sub-menu v-else :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;&gt;</span><br><span class="line">      &lt;template #title&gt;</span><br><span class="line">        &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">          &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">        &lt;/el-icon&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">      &lt;TreeMenu :index=&quot;&#x27;$&#123;props.index&#125;-$&#123;item.meta.id&#125;&#x27;&quot;</span><br><span class="line">        :menu-data=&quot;item.children&quot;/&gt;</span><br><span class="line">    &lt;/el-sub-menu&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="问题原因">问题原因</h2>
+<ol style="list-style-type: decimal">
+<li><p><strong>模板字符串语法错误</strong>：在 Vue 模板中，<code>$&#123;&#125;</code> 语法不会生效，这导致所有菜单项的 index 值都变成了字符串 <code>'$&#123;props.index&#125;-$&#123;item.meta.id&#125;'</code>，而不是实际的拼接值。</p></li>
+<li><p><strong>index 值重复</strong>：由于模板字符串没有正确解析，所有菜单项都获得了相同的 index 值，导致 Element Plus 无法正确区分不同的菜单项。</p></li>
 </ol>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>修改 index 的绑定方式，使用正确的字符串拼接语法：</p>
+<h2 id="解决方案">解决方案</h2>
+<p>修改 index 的绑定方式，使用正确的字符串拼接语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;template v-for=&quot;(item, index) in props.menuData&quot;&gt;</span><br><span class="line">    &lt;el-menu-item </span><br><span class="line">      v-if=&quot;!item.children || item.children == 0&quot; </span><br><span class="line">      :index=&quot;props.index + &#x27;-&#x27; + item.meta.id&quot;</span><br><span class="line">      :key=&quot;props.index + &#x27;-&#x27; + item.meta.id&quot;&gt;</span><br><span class="line">      &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">        &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">      &lt;/el-icon&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/el-menu-item&gt;</span><br><span class="line">    &lt;el-sub-menu v-else :index=&quot;props.index + &#x27;-&#x27; + item.meta.id&quot;&gt;</span><br><span class="line">      &lt;template #title&gt;</span><br><span class="line">        &lt;el-icon size=&quot;20&quot;&gt;</span><br><span class="line">          &lt;component :is=&quot;item.meta.icon&quot;&gt;&lt;/component&gt;</span><br><span class="line">        &lt;/el-icon&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123; item.meta.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">      &lt;TreeMenu :index=&quot;props.index + &#x27;-&#x27; + item.meta.id&quot;</span><br><span class="line">        :menu-data=&quot;item.children&quot;/&gt;</span><br><span class="line">    &lt;/el-sub-menu&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改要点"><a href="#修改要点" class="headerlink" title="修改要点"></a>修改要点</h2><ol>
-<li>将模板字符串语法 <code>`$&#123;props.index&#125;-$&#123;item.meta.id&#125;`</code> 改为使用 <code>+</code> 运算符拼接：<code>props.index + &#39;-&#39; + item.meta.id</code></li>
+<h2 id="修改要点">修改要点</h2>
+<ol style="list-style-type: decimal">
+<li>将模板字符串语法 <code>`$&#123;props.index&#125;-$&#123;item.meta.id&#125;`</code> 改为使用 <code>+</code> 运算符拼接：<code>props.index + '-' + item.meta.id</code></li>
 <li>确保每个菜单项都有唯一的 index 值，通过组合 <code>props.index</code> 和 <code>item.meta.id</code></li>
 </ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<h2 id="注意事项">注意事项</h2>
+<ol style="list-style-type: decimal">
 <li>在 Vue 模板中，字符串拼接应该使用 <code>+</code> 运算符，而不是模板字符串语法</li>
 <li>确保每个菜单项都有唯一的 index 值，这对于 Element Plus 菜单组件的正常工作至关重要</li>
 <li>在递归组件中（如本例中的 TreeMenu），要确保每一层的 index 都是唯一的</li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题的核心在于正确设置菜单项的 index 值。通过使用正确的字符串拼接语法，我们可以确保每个菜单项都有唯一的标识符，从而解决菜单项同时展开&#x2F;折叠的问题。 </p>
+<h2 id="总结">总结</h2>
+<p>这个问题的核心在于正确设置菜单项的 index 值。通过使用正确的字符串拼接语法，我们可以确保每个菜单项都有唯一的标识符，从而解决菜单项同时展开/折叠的问题。</p>
 
         
       </div>

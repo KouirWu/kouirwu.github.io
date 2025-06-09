@@ -158,6 +158,21 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/">
+                Deepseek
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/">
+                Linux
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
+                Ollama
+                <div class="category-count">2</div>
+            </a>
+        </div></div></div></div>
             <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
                 机器学习实战
                 <div class="category-count">1</div>
@@ -203,21 +218,6 @@
                 <div class="category-count">1</div>
             </a>
         </div></div></div></div></div></div>
-            <a class="category-link" href="/categories/Deepseek/">
-                Deepseek
-                <div class="category-count">2</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/">
-                Linux
-                <div class="category-count">2</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
-                Ollama
-                <div class="category-count">2</div>
-            </a>
-        </div></div></div></div>
             <a class="category-link" href="/categories/leetcode/">
                 leetcode
                 <div class="category-count">4</div>
@@ -367,26 +367,23 @@
         
           <div class="truncate-text">
             
-              什么是piniaPinia 是 Vue 的专属状态管理库，可以实现跨组件或页面共享状态，是 vuex 状态管理工具的替代品，和 Vuex相比，具备以下优势
+              什么是pinia
+Pinia 是 Vue 的专属状态管理库，可以实现跨组件或页面共享状态，是 vuex 状态管理工具的替代品，和 Vuex相比，具备以下优势
 
 提供更加简单的API （去掉了 mutation ）
 提供符合组合式API风格的API （和 Vue3 新语法统一）
 去掉了modules的概念，每一个store都是一个独立的模块
 搭配 TypeScript 一起使用提供可靠的类型推断
 
-创建空Vue项目并安装Pinia1. 创建空Vue项目1npm init vue@latest
-
-2. 安装Pinia并注册1npm i pinia
-
+创建空Vue项目并安装Pinia
+1. 创建空Vue项目
+1npm init vue@latest
+2. 安装Pinia并注册
+1npm i pinia
 12345678import &#123; createPinia &#125; from &#x27;pinia&#x27;const app = createApp(App)// 以插件的形式注册app.use(createPinia())app.use(router)app.mount(&#x27;#app&#x27;)
 实现counter
-核心步骤：
 
-定义store
-组件使用store1- 定义store
-
-
-1234567891...
+核心步骤： 1. 定义store 2. 组件使用stor...
             
           </div>
         
@@ -448,7 +445,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.2k 词 
+            1.3k 词 
           </div>
         </div>
         
@@ -460,22 +457,17 @@
           <div class="truncate-text">
             
               小兔鲜Vue3 Day_1
-使用create-vue搭建Vue3项目执行如下命令，这一指令将会安装并执行 create-vue
-1npm init vue@laster
 
+使用create-vue搭建Vue3项目
+执行如下命令，这一指令将会安装并执行 create-vue 1npm init vue@laster 
+组合式Api - setup选项
+语法糖
 
-熟悉项目和关键文件
-
-组合式Api - setup选项语法糖
 script标签添加 setup标记，不需要再写导出语句，默认会添加导出语句
 
 123456&lt;script setup&gt;const message = &#x27;this is message&#x27;const logMessage = () =&gt; &#123;	console.log(message)&#125;&lt;/script&gt;
-
-
-响应式数据refref
-接受简单类型或对象类型的数据传入并返回一个响应式对象
-
-12345678910111213&lt;script setup&gt;//导入必要的包import &#123; ref &#125; from &#x27;vue&#x27;//定义函数 传入参数 变量接受const count = ref(0)const setCount = () =&gt;...
+computed 计算属性
+123456789101112&lt;script setup&gt;import &#123; ref, computed &#125; from &#x27;vue&#x27;//原始数据const count = ref(0)//计算属性const doubleCount = computed(() =&gt; count.value * 2)...
             
           </div>
         
@@ -537,7 +529,7 @@ script标签添加 setup标记，不需要再写导出语句，默认会添加�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            692 词 
+            672 词 
           </div>
         </div>
         
@@ -549,12 +541,14 @@ script标签添加 setup标记，不需要再写导出语句，默认会添加�
           <div class="truncate-text">
             
               Linux部署OIlama解决cherry studio监听问题
+
 通过调用systemctl edit ollama.service编辑 systemd 服务。这将打开一个编辑器。这边可以直接通过vim /etc/systemd/system/ollama.service，打开编辑。
 
 
 
-ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 systemd 的 service 文件&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;ollama.service
-12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;...
+ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0 修改 systemd 的 service 文件 /etc/systemd/system/ollama.service
+
+12345678910111213141516/etc/systemd/system/ollama.service[Unit]Description=Ollama ServiceAfter=network-online.target[Service]ExecStart=/usr/local/bin/ollama  serveUser=ollamaGroup=ollamaRestart=alwaysRestartSec=3Environment=&quot;PATH=/us...
             
           </div>
         
@@ -627,23 +621,23 @@ ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 sy
         
           <div class="truncate-text">
             
-              适用于Linux系统卸载Ollama的详细步骤1.停止并禁用Ollama服务12#停止服务sudo systemctl stop ollama
-
+              适用于Linux系统卸载Ollama的详细步骤
+1.停止并禁用Ollama服务
+12#停止服务sudo systemctl stop ollama
 12#禁用开机自启sudo systemctl disable ollama
-
-2.删除Ollama主程序根据官方方式选择对应操作：如果通过官方脚本安装（默认途径）12#删除二进制文件sudo rm -f /usr/local/bin/ollama
-
+2.删除Ollama主程序
+根据官方方式选择对应操作：
+如果通过官方脚本安装（默认途径）
+12#删除二进制文件sudo rm -f /usr/local/bin/ollama
 12#删除服务配置文件sudo rm -rf/etc/systemd/system/ollama.service
-
-通过手动下载二进制安装12#找到你的安装路径(例如 ~/bin/ollama)sudo rm -f/path/to/your/ollama
-
-3.删除用户数据与模型缓存12#删除所有模型和配置数据rm -rf ~/.ollama
-
-4.清楚Systemd残留配置12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
-
-5.验证卸载12#检查进程是否仍在运行ps aux | grep ollama
-
-12#检查二进...
+通过手动下载二进制安装
+12#找到你的安装路径(例如 ~/bin/ollama)sudo rm -f/path/to/your/ollama
+3.删除用户数据与模型缓存
+12#删除所有模型和配置数据rm -rf ~/.ollama
+4.清楚Systemd残留配置
+12#删除服务配置目录sudo rm -rf/etc/systemd/system/ollama.serviced.d
+5.验证卸载
+12#检查进程是否仍在运行ps aux | gr...
             
           </div>
         
@@ -716,26 +710,22 @@ ollama 默认端口是监听在本地 ip 127.0.0.1,修改改成 0.0.0.0修改 sy
         
           <div class="truncate-text">
             
-              本地环境安装流程1.安装Anaconda
-访问 Anaconda 官方网站 https://www.anaconda.com/download 下载对应系统版本的安装包
+              本地环境安装流程
+1.安装Anaconda
 
+访问 Anaconda 官方网站 https://www.anaconda.com/download 下载对应系统版本的安装包
 Windows系统安装步骤:
 
+
 双击下载的exe安装文件
-选择”Install for All Users”(推荐)
+选择&quot;Install for All Users&quot;(推荐)
 选择安装路径(建议安装在非系统盘)
-勾选”Add Anaconda to my PATH environment variable”
+勾选&quot;Add Anaconda to my PATH environment variable&quot;
 完成安装后打开Anaconda Prompt验证安装
 
 
-Linux系统安装步骤:
-12345678# 下载安装包wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh# 赋予执行权限chmod +x Anaconda3-2023.09-0-Linux-x86_64.sh# 运行安装脚本bash Anaconda3-2023.09-0-Linux-x86_64.sh
-
-验证安装:
-1conda --version
-
-配置conda镜像源(可选):
-123conda con...
+Linux系统安装步骤: 12345678# 下载安装包wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh# 赋予执行权限chmod +x Anaconda3-2023.09-0-Linux-x86_64.sh# 运行安装脚本bash Anaconda3-2023.09-0-Linux-x86_64.sh
+验证安装: 1conda --v...
             
           </div>
         
