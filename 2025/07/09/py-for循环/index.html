@@ -14,22 +14,24 @@
   
 
   
-  <title>季禾子寒舍</title>
+  <title>Python for循环详解与高效用法 | 季禾子寒舍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="🚀 精通 Python for 循环：从入门到高效实践 Python 的 for 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 for (int i &#x3D; 0; i &lt; 5; i++) 循环。然而，Python 的 for 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。 在这篇博文中，我们将">
+  <meta name="description" content="🚀 精通 Python for 循环：从入门到高效实践Python 的 for 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 for (int i &#x3D; 0; i &lt; 5; i++) 循环。然而，Python 的 for 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。 在这篇博文中，我们将深入探">
 <meta property="og:type" content="article">
-<meta property="og:title" content="季禾子寒舍">
+<meta property="og:title" content="Python for循环详解与高效用法">
 <meta property="og:url" content="https://kouirwu.github.io/2025/07/09/py-for%E5%BE%AA%E7%8E%AF/index.html">
 <meta property="og:site_name" content="季禾子寒舍">
-<meta property="og:description" content="🚀 精通 Python for 循环：从入门到高效实践 Python 的 for 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 for (int i &#x3D; 0; i &lt; 5; i++) 循环。然而，Python 的 for 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。 在这篇博文中，我们将">
+<meta property="og:description" content="🚀 精通 Python for 循环：从入门到高效实践Python 的 for 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 for (int i &#x3D; 0; i &lt; 5; i++) 循环。然而，Python 的 for 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。 在这篇博文中，我们将深入探">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-09T02:40:47.646Z">
-<meta property="article:modified_time" content="2025-07-09T02:45:07.857Z">
+<meta property="article:published_time" content="2025-07-09T03:01:50.000Z">
+<meta property="article:modified_time" content="2025-07-09T03:05:19.660Z">
 <meta property="article:author" content="Kouir Wu">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="for循环">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="季禾子寒舍" type="application/atom+xml">
@@ -162,41 +164,6 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
-                机器学习实战
-                <div class="category-count">1</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/Titanic/">
-                Titanic
-                <div class="category-count">1</div>
-            </a>
-        </div></div>
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
-                前端开发
-                <div class="category-count">3</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/">
-                Vue3
-                <div class="category-count">3</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E5%B0%8F%E5%85%94%E9%B2%9C/">
-                小兔鲜
-                <div class="category-count">2</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
-                问题解决
-                <div class="category-count">1</div>
-            </a>
-        <div class="children" style="display: none;"><div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/">
-                vue3陪诊系统
-                <div class="category-count">1</div>
-            </a>
-        </div></div></div></div></div></div>
             <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
                 人工智能
                 <div class="category-count">1</div>
@@ -222,6 +189,41 @@
                 <div class="category-count">2</div>
             </a>
         </div></div></div></div>
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
+                机器学习实战
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/Titanic/">
+                Titanic
+                <div class="category-count">1</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
+                前端开发
+                <div class="category-count">4</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/">
+                Vue3
+                <div class="category-count">4</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E5%B0%8F%E5%85%94%E9%B2%9C/">
+                小兔鲜
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
+                问题解决
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/">
+                vue3陪诊系统
+                <div class="category-count">1</div>
+            </a>
+        </div></div></div></div></div></div>
             <a class="category-link" href="/categories/leetcode/">
                 leetcode
                 <div class="category-count">4</div>
@@ -232,13 +234,28 @@
                 <div class="category-count">4</div>
             </a>
         </div></div>
+            <a class="category-link" href="/categories/Python/">
+                Python
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Python/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+                编程基础
+                <div class="category-count">1</div>
+            </a>
+        </div></div>
             <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
                 机器学习
-                <div class="category-count">1</div>
+                <div class="category-count">2</div>
             </a>
         <div class="children" style="display: none;"><div class="category-box">
             <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
                 环境配置
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                深度学习
                 <div class="category-count">1</div>
             </a>
         </div></div></div>
@@ -270,7 +287,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Element-Plus/" rel="tag">Element Plus</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MCP/" rel="tag">MCP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ollama/" rel="tag">Ollama</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Titanic/" rel="tag">Titanic</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Trae-AI/" rel="tag">Trae AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Vue3/" rel="tag">Vue3</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/" rel="tag">vue3陪诊系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">前端开发</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E5%85%94%E9%B2%9C/" rel="tag">小兔鲜</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/" rel="tag">小白教程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Element-Plus/" rel="tag">Element Plus</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MCP/" rel="tag">MCP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ollama/" rel="tag">Ollama</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Titanic/" rel="tag">Titanic</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Trae-AI/" rel="tag">Trae AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Vue3/" rel="tag">Vue3</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/" rel="tag">vue3陪诊系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">前端开发</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E5%85%94%E9%B2%9C/" rel="tag">小兔鲜</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/" rel="tag">小白教程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li></ul>
     </div>
   </div>
 
@@ -282,9 +299,15 @@
       <h3 class="widget-title">最新文章</h3>
       <ul>
         
-          <a class="recent-link" href="/2025/07/09/py-for%E5%BE%AA%E7%8E%AF/" title="" >
+          <a class="recent-link" href="/2025/07/14/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%88Contrastive%20Learning%EF%BC%89%EF%BC%9A%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" title="对比学习（Contrastive Learning）：小白也能懂的原理与应用" >
             <div class="recent-link-text">
-              (no title)
+              对比学习（Contrastive Learning）：小白也能懂的原理与应用
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/07/09/py-for%E5%BE%AA%E7%8E%AF/" title="Python for循环详解与高效用法" >
+            <div class="recent-link-text">
+              Python for循环详解与高效用法
             </div>
           </a>
         
@@ -303,12 +326,6 @@
           <a class="recent-link" href="/2025/06/05/hot100%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="LeetCode Hot 100 - 1. 两数之和" >
             <div class="recent-link-text">
               LeetCode Hot 100 - 1. 两数之和
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2025/06/05/hot100%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D/" title="✨ LeetCode Hot 100 - 49. 字母异位词分组 ✨" >
-            <div class="recent-link-text">
-              ✨ LeetCode Hot 100 - 49. 字母异位词分组 ✨
             </div>
           </a>
         
@@ -337,7 +354,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        无标题
+        Python for循环详解与高效用法
       </h1>
     
   
@@ -345,167 +362,157 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2025-07-09T02:40:47.646Z" itemprop="datePublished">2025-07-09</time>
+  <time class="dt-published" datetime="2025-07-09T03:01:50.000Z" itemprop="datePublished">2025-07-09</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-    未分类 
+  <a class="meta-cate-link" href="/categories/Python/">Python</a>><a class="meta-cate-link" href="/categories/Python/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.5k 词 
+            3.4k 词 
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h1 id="精通-python-for-循环从入门到高效实践">🚀 精通 Python <code>for</code> 循环：从入门到高效实践</h1>
-<p>Python 的 <code>for</code> 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 <code>for (int i = 0; i &lt; 5; i++)</code> 循环。然而，Python 的 <code>for</code> 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。</p>
+          <h1 id="🚀-精通-Python-for-循环：从入门到高效实践"><a href="#🚀-精通-Python-for-循环：从入门到高效实践" class="headerlink" title="🚀 精通 Python for 循环：从入门到高效实践"></a>🚀 精通 Python <code>for</code> 循环：从入门到高效实践</h1><p>Python 的 <code>for</code> 循环是其最强大、最灵活的特性之一。如果你有其他编程语言的背景，你可能会习惯于 C 风格的 <code>for (int i = 0; i &lt; 5; i++)</code> 循环。然而，Python 的 <code>for</code> 循环在设计上更接近“for-each”循环，它直接遍历集合中的每一个元素，这使得代码更加简洁和易读。</p>
 <p>在这篇博文中，我们将深入探讨 Python <code>for</code> 循环的各种用法，从基础的元素遍历，到使用 <code>range()</code>, <code>enumerate()</code> 等内置函数的高效实践。</p>
-<hr />
-<h2 id="基础用法直接遍历可迭代对象">1. 基础用法：直接遍历可迭代对象</h2>
-<p>这是 <code>for</code> 循环最核心、最直观的用法。它可以直接遍历任何“可迭代对象”（如列表 <code>list</code>, 元组 <code>tuple</code>, 字符串 <code>str</code>, 集合 <code>set</code> 等）中的每一个元素。</p>
+<hr>
+<h2 id="1-基础用法：直接遍历可迭代对象"><a href="#1-基础用法：直接遍历可迭代对象" class="headerlink" title="1. 基础用法：直接遍历可迭代对象"></a>1. 基础用法：直接遍历可迭代对象</h2><p>这是 <code>for</code> 循环最核心、最直观的用法。它可以直接遍历任何“可迭代对象”（如列表 <code>list</code>, 元组 <code>tuple</code>, 字符串 <code>str</code>, 集合 <code>set</code> 等）中的每一个元素。</p>
 <p><strong>语法结构：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="comment"># 对 element 执行某些操作</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>示例：遍历一个列表</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个水果列表</span></span><br><span class="line">fruits = [<span class="string">&quot;苹果&quot;</span>, <span class="string">&quot;香蕉&quot;</span>, <span class="string">&quot;樱桃&quot;</span>, <span class="string">&quot;芒果&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历列表并打印每个水果</span></span><br><span class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;我今天想吃的水果是：<span class="subst">&#123;fruit&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 我今天想吃的水果是：苹果<br />
-&gt; 我今天想吃的水果是：香蕉<br />
-&gt; 我今天想吃的水果是：樱桃<br />
-&gt; 我今天想吃的水果是：芒果</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>我今天想吃的水果是：苹果<br>我今天想吃的水果是：香蕉<br>我今天想吃的水果是：樱桃<br>我今天想吃的水果是：芒果</p>
+</blockquote>
 <p>看，代码非常直观！我们不需要关心索引或列表的长度，Python 会自动处理好这一切。</p>
-<hr />
-<h2 id="range-函数按次数或索引循环">2. <code>range()</code> 函数：按次数或索引循环</h2>
-<p>当你需要循环一个固定的次数，或者需要根据索引来访问元素时，<code>range()</code> 函数就派上用场了。它能生成一个不可变的整数序列。</p>
+<hr>
+<h2 id="2-range-函数：按次数或索引循环"><a href="#2-range-函数：按次数或索引循环" class="headerlink" title="2. range() 函数：按次数或索引循环"></a>2. <code>range()</code> 函数：按次数或索引循环</h2><p>当你需要循环一个固定的次数，或者需要根据索引来访问元素时，<code>range()</code> 函数就派上用场了。它能生成一个不可变的整数序列。</p>
 <p><code>range()</code> 主要有三种形式：</p>
-<h3 id="a.-rangestop">a. <code>range(stop)</code></h3>
-<p>生成一个从 <code>0</code> 开始到 <code>stop - 1</code> 的整数序列。</p>
+<h3 id="a-range-stop"><a href="#a-range-stop" class="headerlink" title="a. range(stop)"></a>a. <code>range(stop)</code></h3><p>生成一个从 <code>0</code> 开始到 <code>stop - 1</code> 的整数序列。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 循环 5 次，打印 0 到 4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;循环次数: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 循环次数: 0<br />
-&gt; 循环次数: 1<br />
-&gt; 循环次数: 2<br />
-&gt; 循环次数: 3<br />
-&gt; 循环次数: 4</p>
-<h3 id="b.-rangestart-stop">b. <code>range(start, stop)</code></h3>
-<p>生成一个从 <code>start</code> 开始到 <code>stop - 1</code> 的整数序列。</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>循环次数: 0<br>循环次数: 1<br>循环次数: 2<br>循环次数: 3<br>循环次数: 4</p>
+</blockquote>
+<h3 id="b-range-start-stop"><a href="#b-range-start-stop" class="headerlink" title="b. range(start, stop)"></a>b. <code>range(start, stop)</code></h3><p>生成一个从 <code>start</code> 开始到 <code>stop - 1</code> 的整数序列。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印从 2 到 5 的数字</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="number">6</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;序列中的数字: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 序列中的数字: 2<br />
-&gt; 序列中的数字: 3<br />
-&gt; 序列中的数字: 4<br />
-&gt; 序列中的数字: 5</p>
-<h3 id="c.-rangestart-stop-step">c. <code>range(start, stop, step)</code></h3>
-<p>生成一个从 <code>start</code> 开始，每次按 <code>step</code> 步长递增，直到 <code>stop</code> 的序列。</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>序列中的数字: 2<br>序列中的数字: 3<br>序列中的数字: 4<br>序列中的数字: 5</p>
+</blockquote>
+<h3 id="c-range-start-stop-step"><a href="#c-range-start-stop-step" class="headerlink" title="c. range(start, stop, step)"></a>c. <code>range(start, stop, step)</code></h3><p>生成一个从 <code>start</code> 开始，每次按 <code>step</code> 步长递增，直到 <code>stop</code> 的序列。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印 1 到 10 之间的所有奇数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;奇数: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 奇数: 1<br />
-&gt; 奇数: 3<br />
-&gt; 奇数: 5<br />
-&gt; 奇数: 7<br />
-&gt; 奇数: 9</p>
-<p>虽然你可以使用 <code>range(len(my_list))</code> 来通过索引遍历列表，但这通常被认为是不够 &quot;Pythonic&quot; 的做法。对于这种情况，我们有更好的工具！</p>
-<hr />
-<h2 id="enumerate-函数最优雅的遍历方式">3. <code>enumerate()</code> 函数：最优雅的遍历方式</h2>
-<p><code>enumerate()</code> 是 Python 的一大特色，它解决了我们既需要<strong>索引</strong>又需要<strong>元素值</strong>的常见需求。它将一个可迭代对象包装成一个枚举对象，每次循环返回 <code>(索引, 元素)</code> 这样一个元组。</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>奇数: 1<br>奇数: 3<br>奇数: 5<br>奇数: 7<br>奇数: 9</p>
+</blockquote>
+<p>虽然你可以使用 <code>range(len(my_list))</code> 来通过索引遍历列表，但这通常被认为是不够 “Pythonic” 的做法。对于这种情况，我们有更好的工具！</p>
+<hr>
+<h2 id="3-enumerate-函数：最优雅的遍历方式"><a href="#3-enumerate-函数：最优雅的遍历方式" class="headerlink" title="3. enumerate() 函数：最优雅的遍历方式"></a>3. <code>enumerate()</code> 函数：最优雅的遍历方式</h2><p><code>enumerate()</code> 是 Python 的一大特色，它解决了我们既需要<strong>索引</strong>又需要<strong>元素值</strong>的常见需求。它将一个可迭代对象包装成一个枚举对象，每次循环返回 <code>(索引, 元素)</code> 这样一个元组。</p>
 <p><strong>语法结构：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, element <span class="keyword">in</span> <span class="built_in">enumerate</span>(iterable):</span><br><span class="line">    <span class="comment"># 同时使用 index 和 element</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>示例：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fruits = [<span class="string">&quot;苹果&quot;</span>, <span class="string">&quot;香蕉&quot;</span>, <span class="string">&quot;樱桃&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;--- 使用 range 的旧方法 ---&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(fruits)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;索引 <span class="subst">&#123;i&#125;</span>: <span class="subst">&#123;fruits[i]&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n--- 使用 enumerate 的优雅方法 ---&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> index, fruit <span class="keyword">in</span> <span class="built_in">enumerate</span>(fruits):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;索引 <span class="subst">&#123;index&#125;</span>: <span class="subst">&#123;fruit&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; --- 使用 range 的旧方法 ---<br />
-&gt; 索引 0: 苹果<br />
-&gt; 索引 1: 香蕉<br />
-&gt; 索引 2: 樱桃<br />
-&gt;<br />
-&gt; --- 使用 enumerate 的优雅方法 ---<br />
-&gt; 索引 0: 苹果<br />
-&gt; 索引 1: 香蕉<br />
-&gt; 索引 2: 樱桃</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>— 使用 range 的旧方法 —<br>索引 0: 苹果<br>索引 1: 香蕉<br>索引 2: 樱桃  </p>
+<p>— 使用 enumerate 的优雅方法 —<br>索引 0: 苹果<br>索引 1: 香蕉<br>索引 2: 樱桃</p>
+</blockquote>
 <p><strong>💡 小贴士：</strong> 当你需要索引时，请优先考虑 <code>enumerate()</code>，代码更简洁、意图更清晰。</p>
-<hr />
-<h2 id="遍历字典">4. 遍历字典</h2>
-<p>遍历字典时，我们可以选择遍历它的键、值，或是键值对。</p>
+<hr>
+<h2 id="4-遍历字典"><a href="#4-遍历字典" class="headerlink" title="4. 遍历字典"></a>4. 遍历字典</h2><p>遍历字典时，我们可以选择遍历它的键、值，或是键值对。</p>
 <p>假设我们有以下字典：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">user_profile = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&quot;coder_zhang&quot;</span>,</span><br><span class="line">    <span class="string">&quot;level&quot;</span>: <span class="number">99</span>,</span><br><span class="line">    <span class="string">&quot;email&quot;</span>: <span class="string">&quot;zhang@example.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="a.-遍历键-keys">a. 遍历键 (Keys)</h3>
-<p>这是对字典进行循环时的默认行为。</p>
+
+<h3 id="a-遍历键-Keys"><a href="#a-遍历键-Keys" class="headerlink" title="a. 遍历键 (Keys)"></a>a. 遍历键 (Keys)</h3><p>这是对字典进行循环时的默认行为。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> user_profile:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;键: <span class="subst">&#123;key&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="b.-遍历值-values">b. 遍历值 (Values)</h3>
-<p>使用 <code>.values()</code> 方法可以只获取字典中的值。</p>
+
+<h3 id="b-遍历值-Values"><a href="#b-遍历值-Values" class="headerlink" title="b. 遍历值 (Values)"></a>b. 遍历值 (Values)</h3><p>使用 <code>.values()</code> 方法可以只获取字典中的值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> user_profile.values():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;值: <span class="subst">&#123;value&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="c.-遍历键值对-items---最常用">c. 遍历键值对 (Items) - <strong>最常用</strong></h3>
-<p>使用 <code>.items()</code> 方法可以同时获取键和值，这是处理字典最常见的方式。</p>
+
+<h3 id="c-遍历键值对-Items-最常用"><a href="#c-遍历键值对-Items-最常用" class="headerlink" title="c. 遍历键值对 (Items) - 最常用"></a>c. 遍历键值对 (Items) - <strong>最常用</strong></h3><p>使用 <code>.items()</code> 方法可以同时获取键和值，这是处理字典最常见的方式。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> user_profile.items():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;key&#125;</span> -&gt; <span class="subst">&#123;value&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; username -&gt; coder_zhang<br />
-&gt; level -&gt; 99<br />
-&gt; email -&gt; zhang@example.com</p>
-<hr />
-<h2 id="进阶技巧">5. 进阶技巧</h2>
-<h3 id="a.-zip---并行遍历">a. <code>zip()</code> - 并行遍历</h3>
-<p>使用 <code>zip()</code> 函数可以“压缩”多个可迭代对象，将它们对应位置的元素打包成元组，然后进行并行遍历。当最短的那个可迭代对象耗尽时，循环就会停止。</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>username -&gt; coder_zhang<br>level -&gt; 99<br>email -&gt; <a href="mailto:&#122;&#x68;&#97;&#110;&#103;&#x40;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;">zhang@example.com</a></p>
+</blockquote>
+<hr>
+<h2 id="5-进阶技巧"><a href="#5-进阶技巧" class="headerlink" title="5. 进阶技巧"></a>5. 进阶技巧</h2><h3 id="a-zip-并行遍历"><a href="#a-zip-并行遍历" class="headerlink" title="a. zip() - 并行遍历"></a>a. <code>zip()</code> - 并行遍历</h3><p>使用 <code>zip()</code> 函数可以“压缩”多个可迭代对象，将它们对应位置的元素打包成元组，然后进行并行遍历。当最短的那个可迭代对象耗尽时，循环就会停止。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">students = [<span class="string">&quot;小明&quot;</span>, <span class="string">&quot;小红&quot;</span>, <span class="string">&quot;小刚&quot;</span>]</span><br><span class="line">scores = [<span class="number">95</span>, <span class="number">88</span>, <span class="number">76</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> student, score <span class="keyword">in</span> <span class="built_in">zip</span>(students, scores):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;student&#125;</span> 的分数是 <span class="subst">&#123;score&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 小明 的分数是 95<br />
-&gt; 小红 的分数是 88<br />
-&gt; 小刚 的分数是 76</p>
-<h3 id="b.-for-else-循环">b. <code>for-else</code> 循环</h3>
-<p>Python 的 <code>for</code> 循环有一个很多人不知道的特性：它可以带一个 <code>else</code> 子句。这个 <code>else</code> 块里的代码会在<strong>循环正常结束</strong>（即没有被 <code>break</code> 语句中断）时执行。</p>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>小明 的分数是 95<br>小红 的分数是 88<br>小刚 的分数是 76</p>
+</blockquote>
+<h3 id="b-for-else-循环"><a href="#b-for-else-循环" class="headerlink" title="b. for-else 循环"></a>b. <code>for-else</code> 循环</h3><p>Python 的 <code>for</code> 循环有一个很多人不知道的特性：它可以带一个 <code>else</code> 子句。这个 <code>else</code> 块里的代码会在<strong>循环正常结束</strong>（即没有被 <code>break</code> 语句中断）时执行。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 寻找列表中的一个数字</span></span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">11</span>]</span><br><span class="line">target = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">    <span class="keyword">if</span> num == target:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;找到了目标数字!&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 只有当 for 循环没有被 break 时才会执行这里</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;列表中没有找到目标数字。&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong> &gt; 列表中没有找到目标数字。</p>
-<hr />
-<h2 id="总结">总结</h2>
-<p>下表总结了 <code>for</code> 循环的不同用法及其适用场景，帮助你快速回顾。</p>
-<table style="width:28%;">
-<colgroup>
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-</colgroup>
+
+<p><strong>输出：</strong></p>
+<blockquote>
+<p>列表中没有找到目标数字。</p>
+</blockquote>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下表总结了 <code>for</code> 循环的不同用法及其适用场景，帮助你快速回顾。</p>
+<table>
 <thead>
-<tr class="header">
+<tr>
 <th align="left"><strong>用法</strong></th>
-<th align="left"><strong>函数/方法</strong></th>
+<th align="left"><strong>函数&#x2F;方法</strong></th>
 <th align="left"><strong>主要应用场景</strong></th>
 <th align="left"><strong>示例代码</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td align="left">遍历元素</td>
 <td align="left">(无)</td>
 <td align="left">只关心集合中的每个元素值</td>
 <td align="left"><code>for item in my_list:</code></td>
 </tr>
-<tr class="even">
-<td align="left">按次数/索引</td>
+<tr>
+<td align="left">按次数&#x2F;索引</td>
 <td align="left"><code>range()</code></td>
 <td align="left">需要循环固定次数，或用索引操作</td>
 <td align="left"><code>for i in range(5):</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">同时遍历索引和元素</td>
 <td align="left"><code>enumerate()</code></td>
 <td align="left">既要索引又要元素</td>
 <td align="left"><code>for i, item in enumerate(my_list):</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">遍历字典</td>
 <td align="left"><code>.keys()</code>, <code>.values()</code>, <code>.items()</code></td>
 <td align="left">分别用于遍历字典的键、值或键值对</td>
 <td align="left"><code>for k, v in my_dict.items():</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">并行遍历</td>
 <td align="left"><code>zip()</code></td>
 <td align="left">需要同时遍历多个集合</td>
 <td align="left"><code>for a, b in zip(list_a, list_b):</code></td>
 </tr>
-</tbody>
-</table>
-<hr />
-<p>希望这篇指南能帮助你更深入地理解和运用 Python 的 <code>for</code> 循环，写出更高效、更优雅的代码！<br />
-<strong>如果你有任何疑问或想法，欢迎在评论区留言交流！😊</strong></p>
+</tbody></table>
+<hr>
+<p>希望这篇指南能帮助你更深入地理解和运用 Python 的 <code>for</code> 循环，写出更高效、更优雅的代码！<br><strong>如果你有任何疑问或想法，欢迎在评论区留言交流！😊</strong></p>
 
         
       </div>
@@ -518,10 +525,15 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2025/07/14/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%88Contrastive%20Learning%EF%BC%89%EF%BC%9A%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/"
+      title="对比学习（Contrastive Learning）：小白也能懂的原理与应用"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        对比学习（Contrastive Learning）：小白也能懂的原理与应用
         
     </p>
   </a>

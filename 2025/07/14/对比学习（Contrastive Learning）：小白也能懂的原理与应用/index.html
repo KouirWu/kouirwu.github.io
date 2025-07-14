@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>对比学习（Contrastive Learning）：小白也能懂的原理与应用 | 季禾子寒舍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="通俗易懂地讲解对比学习（Contrastive Learning）的原理、应用与代码实践，适合小白入门。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对比学习（Contrastive Learning）：小白也能懂的原理与应用">
+<meta property="og:url" content="https://kouirwu.github.io/2025/07/14/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%88Contrastive%20Learning%EF%BC%89%EF%BC%9A%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="季禾子寒舍">
+<meta property="og:description" content="通俗易懂地讲解对比学习（Contrastive Learning）的原理、应用与代码实践，适合小白入门。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-14T08:30:23.000Z">
+<meta property="article:modified_time" content="2025-07-14T08:31:36.623Z">
+<meta property="article:author" content="Kouir Wu">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="对比学习">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="季禾子寒舍" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/background.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>季禾子寒舍 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/leetcode">Leetcode指南</a>
+    
+      <a class="main-nav-link" href="/machine_learning">机器学习</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/about">关于我</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/leetcode">Leetcode指南</a>
+    
+      <a class="nav-dropdown-link" href="/machine_learning">机器学习</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于我</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/touxiang.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Kouir Wu </div>
+      <div class="dot"></div>
+      <div class="subtitle">当你深处深渊，退无可退的时候，眼前只剩下向上的一条路。 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/KouirWu" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                人工智能
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/Trae-AI/">
+                Trae AI
+                <div class="category-count">1</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/Deepseek/">
+                Deepseek
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/">
+                Linux
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Deepseek/Linux/Ollama/">
+                Ollama
+                <div class="category-count">2</div>
+            </a>
+        </div></div></div></div>
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
+                机器学习实战
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/Titanic/">
+                Titanic
+                <div class="category-count">1</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
+                前端开发
+                <div class="category-count">4</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/">
+                Vue3
+                <div class="category-count">4</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E5%B0%8F%E5%85%94%E9%B2%9C/">
+                小兔鲜
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
+                问题解决
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/">
+                vue3陪诊系统
+                <div class="category-count">1</div>
+            </a>
+        </div></div></div></div></div></div>
+            <a class="category-link" href="/categories/leetcode/">
+                leetcode
+                <div class="category-count">4</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/leetcode/hot100/">
+                hot100
+                <div class="category-count">4</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/Python/">
+                Python
+                <div class="category-count">1</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/Python/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+                编程基础
+                <div class="category-count">1</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                机器学习
+                <div class="category-count">2</div>
+            </a>
+        <div class="children" style="display: none;"><div class="category-box">
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+                环境配置
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                深度学习
+                <div class="category-count">1</div>
+            </a>
+        </div></div></div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.category-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const children = this.nextElementSibling;
+        if (children && children.classList.contains('children')) {
+          e.preventDefault();
+          if (children.style.display === 'none') {
+            children.style.display = 'block';
+          } else {
+            children.style.display = 'none';
+          }
+        }
+      });
+    });
+    // 设置初始状态为折叠状态
+    document.querySelectorAll('.children').forEach(children => {
+      children.style.display = 'none';
+    });
+  </script>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Deepseek/" rel="tag">Deepseek</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Element-Plus/" rel="tag">Element Plus</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MCP/" rel="tag">MCP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ollama/" rel="tag">Ollama</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Titanic/" rel="tag">Titanic</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Trae-AI/" rel="tag">Trae AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Vue3/" rel="tag">Vue3</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/vue3%E9%99%AA%E8%AF%8A%E7%B3%BB%E7%BB%9F/" rel="tag">vue3陪诊系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">前端开发</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E5%85%94%E9%B2%9C/" rel="tag">小兔鲜</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/" rel="tag">小白教程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/07/14/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%EF%BC%88Contrastive%20Learning%EF%BC%89%EF%BC%9A%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" title="对比学习（Contrastive Learning）：小白也能懂的原理与应用" >
+            <div class="recent-link-text">
+              对比学习（Contrastive Learning）：小白也能懂的原理与应用
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/07/09/py-for%E5%BE%AA%E7%8E%AF/" title="Python for循环详解与高效用法" >
+            <div class="recent-link-text">
+              Python for循环详解与高效用法
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/06/06/hot100%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="✨ LeetCode Hot 100 - 283. 移动零 ✨" >
+            <div class="recent-link-text">
+              ✨ LeetCode Hot 100 - 283. 移动零 ✨
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/06/06/hot100%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/" title="✨ LeetCode Hot 100 - 128. 最长连续序列 ✨" >
+            <div class="recent-link-text">
+              ✨ LeetCode Hot 100 - 128. 最长连续序列 ✨
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/06/05/hot100%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="LeetCode Hot 100 - 1. 两数之和" >
+            <div class="recent-link-text">
+              LeetCode Hot 100 - 1. 两数之和
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-对比学习（Contrastive Learning）：小白也能懂的原理与应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        对比学习（Contrastive Learning）：小白也能懂的原理与应用
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-07-14T08:30:23.000Z" itemprop="datePublished">2025-07-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>><a class="meta-cate-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            14k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag">对比学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="对比学习（Contrastive-Learning）：小白也能懂的原理与应用"><a href="#对比学习（Contrastive-Learning）：小白也能懂的原理与应用" class="headerlink" title="对比学习（Contrastive Learning）：小白也能懂的原理与应用"></a>对比学习（Contrastive Learning）：小白也能懂的原理与应用</h1><h2 id="引言：为什么我们需要对比学习？"><a href="#引言：为什么我们需要对比学习？" class="headerlink" title="引言：为什么我们需要对比学习？"></a>引言：为什么我们需要对比学习？</h2><p>在人工智能，特别是机器学习领域，我们经常面临一个挑战：如何让计算机理解事物的“相似性”和“差异性”？传统的机器学习方法通常需要我们明确地告诉模型“这个是A，那个是B”。但现实世界是复杂的，很多时候我们没有足够的标签数据，或者我们想让模型学会一种更深层次的理解，而不仅仅是简单的分类。</p>
+<p>例如，在您之前提到的意图识别任务中，模型很难区分“乱说的语句”和“有意义的语句”，因为“乱说的语句”的可能性是无限的。模型学到的只是有限的几个意图，对于它没见过的“乱说”，它会感到困惑，甚至错误地归类。</p>
+<p>对比学习正是为了解决这类问题而生。它提供了一种强大的方法，让模型在没有明确标签的情况下，也能学习到数据内在的结构和关系。它不直接告诉模型“这是什么”，而是通过“对比”来教会模型“谁和谁更像，谁和谁更不像”。</p>
+<h2 id="核心思想：从“教小朋友认动物”的故事说起"><a href="#核心思想：从“教小朋友认动物”的故事说起" class="headerlink" title="核心思想：从“教小朋友认动物”的故事说起"></a>核心思想：从“教小朋友认动物”的故事说起</h2><p>为了让您更好地理解对比学习，我们用一个完全不需要编程知识的故事来解释它。</p>
+<h3 id="故事背景：聪明的图书管理员小明"><a href="#故事背景：聪明的图书管理员小明" class="headerlink" title="故事背景：聪明的图书管理员小明"></a>故事背景：聪明的图书管理员小明</h3><p>想象一下，有一位名叫小明的图书管理员，他的工作是整理一个特殊的儿童动物图片库。这个图片库里有成千上万张动物照片，但都没有标签。小明的目标是训练一个机器人助手，让这个助手能自动整理这些照片，把<strong>同一种动物的照片放在一起</strong>。</p>
+<p>但是，小明自己也不是动物专家，他只知道一个最基本的原则：<strong>“长得像的，很可能是同一种动物；长得不像的，肯定不是同一种动物。”</strong></p>
+<p>这就是“对比学习”最核心的思想。它不是直接告诉模型“这张是猫，那张是狗”，而是让模型通过“对比”来自己学习事物的特征。</p>
+<h3 id="第一步：准备“学习材料”-制作对比样本"><a href="#第一步：准备“学习材料”-制作对比样本" class="headerlink" title="第一步：准备“学习材料” (制作对比样本)"></a>第一步：准备“学习材料” (制作对比样本)</h3><p>小明找来一张照片，比如是一张 <strong>“可爱的柯基犬”</strong>。为了让机器人开始学习，他需要给机器人一些“对比”的例子。于是他这么做：</p>
+<ol>
+<li><p><strong>找一个“相似的好朋友”（Positive Sample - 正样本）</strong></p>
+<ul>
+<li>小明把这张柯基照片拿去“增强”了一下。怎么增强呢？他可能：<ul>
+<li>把照片<strong>裁剪</strong>了一下，只留下柯基的头部。</li>
+<li>把照片调成了<strong>黑白</strong>色。</li>
+<li>给照片加了一点点<strong>模糊</strong>效果。</li>
+<li>把照片<strong>水平翻转</strong>了一下。</li>
+</ul>
+</li>
+<li>现在，他得到了一张“增强版”的柯基照片。虽然样子变了点，但<strong>本质上还是那只柯基</strong>。这张“增强版”照片，就是我们所说的<strong>正样本</strong>。它和小明手里的原始照片是一对“好朋友”。</li>
+</ul>
+</li>
+<li><p><strong>找一群“无关的路人”（Negative Samples - 负样本）</strong></p>
+<ul>
+<li>然后，小明从图片库里<strong>随机</strong>抓取了一大把其他照片。这里面可能有：<ul>
+<li>一张<strong>猫</strong>的照片。</li>
+<li>一张<strong>汽车</strong>的照片。</li>
+<li>一张<strong>苹果</strong>的照片。</li>
+<li>甚至另一只<strong>不同品种的狗</strong>（比如哈士奇）的照片。</li>
+</ul>
+</li>
+<li>这些和“柯基”完全不相关的照片，就是我们所说的<strong>负样本</strong>。它们是一群“路人”。</li>
+</ul>
+</li>
+</ol>
+<p>现在，小明的学习材料准备好了：</p>
+<ul>
+<li><strong>原始照片 (Anchor)</strong>：可爱的柯基犬</li>
+<li><strong>好朋友 (Positive)</strong>：增强版的柯基犬</li>
+<li><strong>一群路人 (Negatives)</strong>：猫、汽车、苹果、哈士奇…</li>
+</ul>
+<h3 id="第二步：开始“对比训练”-核心学习过程"><a href="#第二步：开始“对比训练”-核心学习过程" class="headerlink" title="第二步：开始“对比训练” (核心学习过程)"></a>第二步：开始“对比训练” (核心学习过程)</h3><p>小明把这些照片交给机器人助手，并给它下达了一个非常简单的指令：</p>
+<blockquote>
+<p><strong>“听好了，你的任务是调整你的‘大脑’（模型参数），目标是：</strong></p>
+<ol>
+<li><strong>让【原始照片】和它的【好朋友】在你的大脑里‘靠得更近’。</strong></li>
+<li><strong>同时，让【原始照片】和那群【路人】在你的大脑里‘离得越远越好’！”</strong></li>
+</ol>
+</blockquote>
+<p>这个过程就像是在一个巨大的空间里移动这些照片的位置：</p>
+<ul>
+<li>机器人看到原始的柯基和增强版的柯基，它会想：“哦，这两个虽然长得有点不一样，但小明说他们是好朋友，我得把它们俩往一块儿挪。”</li>
+<li>接着，机器人看到原始的柯基和猫、汽车、苹果，它会想：“哇，这些东西跟柯基差别太大了，小明说它们是路人，我必须把它们推得远远的，离柯基越远越好。”</li>
+</ul>
+<p>机器人会<strong>成千上万次</strong>地重复这个过程，每次都用不同的“原始照片”和它的“好朋友”以及一群“路人”来学习。</p>
+<h3 id="第三步：学习成果-形成特征空间"><a href="#第三步：学习成果-形成特征空间" class="headerlink" title="第三步：学习成果 (形成特征空间)"></a>第三步：学习成果 (形成特征空间)</h3><p>经过海量的“拉近”与“推远”训练后，机器人的“大脑”里会发生什么神奇的变化呢？</p>
+<p>它会自动形成一个非常有组织的“<strong>特征空间</strong>”（可以想象成一个巨大的、无形的图书馆）。在这个空间里：</p>
+<ul>
+<li><strong>物以类聚</strong>：所有关于“猫”的照片，不管是什么姿势、什么颜色，都会被机器人自动地聚集在一个角落。所有“狗”的照片会聚集在另一个角落。所有“汽车”的照片又在另一个遥远的角落。</li>
+<li><strong>界限分明</strong>：“猫”的区域和“狗”的区域之间会有非常清晰的“鸿沟”，因为在训练中，猫和狗一直被当作“路人”而互相推远。</li>
+</ul>
+<p>这个机器人虽然自始至终都<strong>不知道“猫”这个词是什么意思</strong>，但它已经通过对比，学会了如何区分猫和狗，以及其他所有事物。它成了一个<strong>特征提取大师</strong>。</p>
+<h2 id="对比学习如何解决意图识别中的“未知意图”问题？"><a href="#对比学习如何解决意图识别中的“未知意图”问题？" class="headerlink" title="对比学习如何解决意图识别中的“未知意图”问题？"></a>对比学习如何解决意图识别中的“未知意图”问题？</h2><p>现在，我们把这个故事和你遇到的问题联系起来。</p>
+<ul>
+<li><strong>动物照片</strong> -&gt; <strong>用户输入的句子</strong></li>
+<li><strong>机器人助手</strong> -&gt; <strong>你的BERT模型</strong></li>
+<li><strong>同一种动物</strong> -&gt; <strong>同一种意图</strong> (例如，都属于“查询天气”)</li>
+<li><strong>不同动物&#x2F;物品</strong> -&gt; <strong>不同的意图</strong> (例如，“查询天气” vs “播放音乐”)</li>
+</ul>
+<p><strong>您的训练过程就变成了：</strong></p>
+<ol>
+<li><p><strong>准备材料</strong>：</p>
+<ul>
+<li><strong>原始句子 (Anchor)</strong>：<code>“今天北京天气怎么样？”</code></li>
+<li><strong>好朋友 (Positive)</strong>：通过数据增强（比如回译、同义词替换）得到的句子，如 <code>“北京今天什么天气？”</code></li>
+<li><strong>一群路人 (Negatives)</strong>：从你的训练数据里随机抽取的其他意图的句子，比如 <code>“来一首周杰伦的歌”</code> (播放音乐意图)，<code>“设置一个明天早上7点的闹钟”</code> (设闹钟意图)。</li>
+</ul>
+</li>
+<li><p><strong>对比训练</strong>：</p>
+<ul>
+<li>你告诉BERT模型：“你要学习，让‘今天北京天气怎么样？’和‘北京今天什么天气？’在你的理解中<strong>意思更接近</strong>。”</li>
+<li>“同时，让‘今天北京天气怎么样？’和‘来一首周杰伦的歌’、‘设置闹钟’这些句子的意思<strong>离得越远越好</strong>。”</li>
+</ul>
+</li>
+</ol>
+<p><strong>训练后的效果：</strong></p>
+<p>经过这样的对比学习，你的BERT模型内部会形成一个强大的“语义空间”。</p>
+<ul>
+<li><strong>7个已知意图</strong>：每个意图都会形成一个紧凑的“语义簇”。所有关于查天气的句子都会聚集在一起，所有关于放音乐的句子聚集在另一个地方。</li>
+<li><strong>“other”场景</strong>：当一个乱说的句子，比如 <code>“我今天中午吃了红烧肉”</code>，进入模型时，模型会计算它在这个语义空间里的位置。<ul>
+<li>因为它在训练中从未被要求和任何一个意图“拉近”过。</li>
+<li>它和“查天气”这个簇的距离很远。</li>
+<li>它和“放音乐”这个簇的距离也很远。</li>
+<li>…它和所有7个已知意图的簇都<strong>非常遥远</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>最后，你就可以定一个规则了：</strong></p>
+<blockquote>
+<p>“如果一个新句子进来后，发现它离所有已知意图的‘语义簇’的中心都超过了一个<strong>安全距离</strong>（阈值），那它就不属于这7个意图中的任何一个，直接把它判定为 <strong>‘other’</strong>！”</p>
+</blockquote>
+<p>这样一来，模型就不会再“自信地”把一个无关的句子硬塞到7个已知类别里了，因为它通过对比学习，已经深刻理解了“不相关”意味着“距离遥远”。</p>
+<p><strong>总结一下给小白的核心思想：</strong></p>
+<p><strong>对比学习，就是不直接教模型“这是什么”，而是通过提供“它和谁是好朋友（相似），和谁是路人（不相似）”这样的大量例子，让模型自己学会分辨万事万物的能力。它学会的不是知识，而是“鉴赏”和“区分”的品味。</strong></p>
+<h2 id="对比学习的优势"><a href="#对比学习的优势" class="headerlink" title="对比学习的优势"></a>对比学习的优势</h2><p>对比学习之所以如此强大，主要有以下几个优势：</p>
+<ol>
+<li><strong>无需大量标签数据（或减少对标签的依赖）</strong>：这是它最大的亮点。很多时候，我们很难获取海量的标注数据。对比学习可以通过无监督或自监督的方式，从大量未标注数据中学习有用的特征表示。</li>
+<li><strong>提升模型泛化能力</strong>：通过学习数据之间的相对关系，模型能够更好地理解数据的内在结构，从而在面对新数据时表现出更强的泛化能力。</li>
+<li><strong>有效处理“未知”或“领域外”数据</strong>：正如您的问题所示，对比学习能让模型更好地识别出那些不属于已知类别的数据，因为这些数据在特征空间中会远离所有已知的簇。</li>
+<li><strong>更好的特征表示</strong>：对比学习训练出的模型，其输出的特征向量（Embedding）通常具有更好的语义意义，相似的输入会得到相似的向量，这对于后续的分类、聚类等任务非常有帮助。</li>
+</ol>
+<h2 id="对比学习的常见应用场景"><a href="#对比学习的常见应用场景" class="headerlink" title="对比学习的常见应用场景"></a>对比学习的常见应用场景</h2><p>对比学习不仅仅用于意图识别，它在许多领域都取得了突破性的进展：</p>
+<ol>
+<li><strong>计算机视觉（Computer Vision）</strong>：<ul>
+<li><strong>图像分类</strong>：即使没有大量标注图片，也能学习到图像的有效特征。</li>
+<li><strong>目标检测与分割</strong>：提升模型对图像中物体识别的鲁棒性。</li>
+<li><strong>人脸识别</strong>：判断两张人脸是否属于同一个人。</li>
+</ul>
+</li>
+<li><strong>自然语言处理（Natural Language Processing, NLP）</strong>：<ul>
+<li><strong>语义相似度匹配</strong>：判断两句话的意思是否相似，例如在问答系统中匹配问题和答案。</li>
+<li><strong>文本聚类</strong>：将意思相近的文本自动归类。</li>
+<li><strong>信息检索</strong>：在海量文档中找到与查询最相关的文档。</li>
+<li><strong>您遇到的意图识别和槽位填充</strong>：特别是处理“领域外”意图。</li>
+</ul>
+</li>
+<li><strong>推荐系统</strong>：<ul>
+<li>学习用户和物品的偏好，推荐用户可能感兴趣的物品。</li>
+</ul>
+</li>
+<li><strong>语音识别</strong>：<ul>
+<li>学习语音信号的特征，提升识别准确率。</li>
+</ul>
+</li>
+</ol>
+<h2 id="简单理解对比学习的“数学”：距离与损失函数"><a href="#简单理解对比学习的“数学”：距离与损失函数" class="headerlink" title="简单理解对比学习的“数学”：距离与损失函数"></a>简单理解对比学习的“数学”：距离与损失函数</h2><p>虽然我们说不讲代码和数学，但简单提一下背后的“驱动力”能帮助您理解为什么模型会“拉近”和“推远”。</p>
+<p>在计算机的世界里，“拉近”和“推远”是通过计算<strong>距离</strong>来实现的。当模型处理一张照片或一句话时，它会把它们转换成一串数字（我们称之为<strong>特征向量</strong>或<strong>嵌入，Embedding</strong>）。</p>
+<ul>
+<li><p><strong>距离计算</strong>：衡量两个向量有多“像”，通常用<strong>余弦相似度</strong>（Cosine Similarity）或<strong>欧氏距离</strong>（Euclidean Distance）来表示。余弦相似度越高（接近1），表示越相似；欧氏距离越小，表示越相似。</p>
+</li>
+<li><p><strong>损失函数（Loss Function）</strong>：这是训练的“指挥棒”。对比学习中最著名的损失函数之一是 <strong>InfoNCE Loss</strong> (Information Noise-Contrastive Estimation Loss)。它的核心思想是：</p>
+<ul>
+<li>对于一对“好朋友”（原始样本和正样本），它们的相似度要尽可能高。</li>
+<li>对于“原始样本”和“路人”（负样本），它们的相似度要尽可能低。</li>
+</ul>
+</li>
+</ul>
+<p>模型在训练过程中，会不断调整自己的内部参数，以最小化这个损失函数。就像小明不断告诉机器人“拉近好朋友，推远路人”，机器人就会努力去做到这一点，直到它找到一个最佳的“大脑配置”，使得所有“好朋友”都靠得很近，所有“路人”都离得很远。</p>
+<h2 id="如何在您的意图识别任务中应用对比学习（非代码层面）"><a href="#如何在您的意图识别任务中应用对比学习（非代码层面）" class="headerlink" title="如何在您的意图识别任务中应用对比学习（非代码层面）"></a>如何在您的意图识别任务中应用对比学习（非代码层面）</h2><p>回到您具体的意图识别问题，如果您想在现有BERT模型的基础上引入对比学习的思想，可以从以下几个方面着手：</p>
+<ol>
+<li><p><strong>数据准备是关键</strong>：</p>
+<ul>
+<li><strong>正样本对的生成</strong>：对于每一个已知的意图句子，您需要生成它的“好朋友”。最简单有效的方法是<strong>数据增强</strong>：<ul>
+<li><strong>回译</strong>：将中文句子翻译成英文，再翻译回中文。例如，“今天天气怎么样？” -&gt; “How’s the weather today?” -&gt; “今天天气如何？”。这会产生语义相同但表达不同的句子。</li>
+<li><strong>同义词替换</strong>：使用同义词词典或基于BERT的同义词替换工具，随机替换句子中的词语。例如，“查询北京天气” -&gt; “询问北京天气”。</li>
+<li><strong>随机删除&#x2F;插入&#x2F;替换</strong>：在不改变原意的前提下，对句子进行微小的改动。</li>
+</ul>
+</li>
+<li><strong>负样本的选取</strong>：负样本的选取非常重要。最常见的做法是：<ul>
+<li><strong>随机采样</strong>：从当前批次（Batch）中随机选择其他意图的句子作为负样本。例如，如果你当前处理的是“查询天气”的句子，那么同一批次中的“播放音乐”、“设置闹钟”等句子都可以作为负样本。</li>
+<li><strong>困难负样本挖掘（Hard Negative Mining）</strong>：这是更高级的策略。模型在训练初期很容易区分差异很大的负样本（比如“天气”和“汽车”）。但更重要的是区分那些“看起来有点像但实际不是”的负样本（比如“查询天气”和“查询新闻”）。困难负样本挖掘就是专门去找那些模型容易混淆的负样本，并加大对它们的“惩罚”，让模型更努力地把它们推远。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>训练流程的调整</strong>：</p>
+<ul>
+<li><strong>预训练（Pre-training）</strong>：在BERT模型上，您可以先进行一个对比学习的预训练阶段。在这个阶段，模型只学习如何区分相似和不相似的句子，而不需要知道具体的意图标签。这可以帮助模型学习到更好的通用语义表示。</li>
+<li><strong>微调（Fine-tuning）</strong>：在对比学习预训练之后，再用您带标签的7个意图数据进行传统的分类任务微调。此时，模型已经具备了强大的语义理解能力，能够更好地将句子映射到正确的意图上。</li>
+</ul>
+</li>
+<li><p><strong>预测时的“未知意图”判断</strong>：</p>
+<ul>
+<li>当一个新句子到来时，首先让您的BERT模型（经过对比学习训练后）将其转换为一个特征向量。</li>
+<li>计算这个特征向量与您7个已知意图的“中心点”（或者每个意图簇的平均向量）之间的距离。</li>
+<li>设定一个<strong>距离阈值</strong>。如果这个新句子与所有7个意图中心点的距离都超过了这个阈值，那么就判定它为“other”意图。</li>
+<li><strong>如何确定阈值</strong>：这需要您在验证集上进行实验。验证集应该包含已知的7个意图的句子，以及大量的“other”句子。通过调整阈值，找到一个最佳平衡点，使得模型既能准确识别已知意图，又能有效地拒绝未知意图。</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对比学习是一种非常强大且灵活的机器学习范式，它通过让模型学习数据之间的相对关系，从而在缺乏标签或需要处理未知数据时表现出色。它让模型从“死记硬背”变成了“举一反三”，学会了如何“鉴赏”和“区分”事物的内在联系。</p>
+<p>对于您遇到的意图识别问题，引入对比学习不仅能提升已知意图的识别准确率，更能显著改善对“乱说语句”的“other”意图判断能力，让您的系统更加智能和鲁棒。</p>
+<p>希望这篇教程能帮助您对对比学习有一个全面而深入的理解！</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Chen, T., Kornblith, S., Norouzi, M., &amp; Hinton, G. (2020). A Simple Framework for Contrastive Learning of Visual Representations. <em>International Conference on Machine Learning (ICML)</em>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.05709">https://arxiv.org/abs/2002.05709</a></p>
+<p>[2] Gao, T., Yao, X., &amp; Chen, D. (2021). SimCSE: Simple Contrastive Learning of Sentence Embeddings. <em>Empirical Methods in Natural Language Processing (EMNLP)</em>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08821">https://arxiv.org/abs/2104.08821</a></p>
+<p>[3] Oord, A. V. D., Li, Y., &amp; Vinyals, O. (2018). Representation Learning with Contrastive Predictive Coding. <em>arXiv preprint arXiv:1807.03748</em>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1807.03748">https://arxiv.org/abs/1807.03748</a></p>
+<p>[4] Hadsell, R., Chopra, S., &amp; LeCun, Y. (2006). Dimensionality Reduction by Learning an Invariant Mapping. <em>IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>. <a target="_blank" rel="noopener" href="https://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">https://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf</a></p>
+<h2 id="代码示例：如何在意图识别中应用对比学习（简化版）"><a href="#代码示例：如何在意图识别中应用对比学习（简化版）" class="headerlink" title="代码示例：如何在意图识别中应用对比学习（简化版）"></a>代码示例：如何在意图识别中应用对比学习（简化版）</h2><p>这一部分我们将通过一个简化的Python代码示例，来展示对比学习在意图识别中的应用。请注意，这是一个<strong>概念性示例</strong>，旨在帮助您理解核心流程，而非生产级别的代码。实际应用中，您会使用更复杂的模型、数据增强技术和训练策略。</p>
+<p>我们将使用<code>sentence-transformers</code>库来简化BERT模型的嵌入过程，并手动实现对比学习的核心逻辑。</p>
+<h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><p>首先，您需要安装必要的库。在您的沙箱环境中，可以通过以下命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install sentence-transformers scikit-learn</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> sentence_transformers <span class="keyword">import</span> SentenceTransformer, util</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics.pairwise <span class="keyword">import</span> cosine_similarity</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 模拟数据集</span></span><br><span class="line"><span class="comment"># 假设我们有以下几个意图的训练数据</span></span><br><span class="line"><span class="comment"># 为了简化，我们只用少量数据，实际中需要更多</span></span><br><span class="line"></span><br><span class="line">intent_data = &#123;</span><br><span class="line">    <span class="string">&quot;查询天气&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;今天北京天气怎么样？&quot;</span>,</span><br><span class="line">        <span class="string">&quot;明天上海会下雨吗？&quot;</span>,</span><br><span class="line">        <span class="string">&quot;查询广州未来三天天气&quot;</span>,</span><br><span class="line">        <span class="string">&quot;现在温度多少度？&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;播放音乐&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;播放周杰伦的歌&quot;</span>,</span><br><span class="line">        <span class="string">&quot;来一首轻快的音乐&quot;</span>,</span><br><span class="line">        <span class="string">&quot;我想听Taylor Swift的歌&quot;</span>,</span><br><span class="line">        <span class="string">&quot;下一首&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;设置闹钟&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;设置一个早上七点的闹钟&quot;</span>,</span><br><span class="line">        <span class="string">&quot;明天早上八点叫醒我&quot;</span>,</span><br><span class="line">        <span class="string">&quot;提醒我下午三点开会&quot;</span>,</span><br><span class="line">        <span class="string">&quot;创建一个闹钟&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模拟一些“other”意图的句子，这些不会直接用于对比学习的“正负样本”构建，</span></span><br><span class="line"><span class="comment"># 但会用于测试模型对未知意图的识别能力。</span></span><br><span class="line">other_data = [</span><br><span class="line">    <span class="string">&quot;我今天中午吃了红烧肉&quot;</span>,</span><br><span class="line">    <span class="string">&quot;你觉得人生有什么意义？&quot;</span>,</span><br><span class="line">    <span class="string">&quot;给我讲个笑话&quot;</span>,</span><br><span class="line">    <span class="string">&quot;随便说点什么&quot;</span>,</span><br><span class="line">    <span class="string">&quot;这个世界真奇妙&quot;</span>,</span><br><span class="line">    <span class="string">&quot;你好啊&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我正在学习人工智能&quot;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 加载预训练的Sentence Transformer模型</span></span><br><span class="line"><span class="comment"># 这个模型可以将句子转换为有意义的向量（Embedding）</span></span><br><span class="line"><span class="comment"># &#x27;paraphrase-multilingual-MiniLM-L12-v2&#x27; 是一个多语言模型，适合中文</span></span><br><span class="line">model = SentenceTransformer(<span class="string">&#x27;paraphrase-multilingual-MiniLM-L12-v2&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 数据增强与对比样本生成函数</span></span><br><span class="line"><span class="comment"># 这是一个非常简化的数据增强，实际中会更复杂</span></span><br><span class="line"><span class="comment"># 这里我们假设通过某种方式（比如人工改写或回译）得到了语义相似的句子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_positive_pair</span>(<span class="params">sentence</span>):</span><br><span class="line">    <span class="comment"># 实际中，这里会调用更复杂的数据增强方法</span></span><br><span class="line">    <span class="comment"># 例如：同义词替换、随机删除/插入、回译等</span></span><br><span class="line">    <span class="comment"># 为了示例，我们简单地返回一个稍微修改过的版本（假设这是通过某种方式生成的）</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;天气&quot;</span> <span class="keyword">in</span> sentence:</span><br><span class="line">        <span class="keyword">return</span> sentence.replace(<span class="string">&quot;天气&quot;</span>, <span class="string">&quot;气候&quot;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">&quot;播放&quot;</span> <span class="keyword">in</span> sentence:</span><br><span class="line">        <span class="keyword">return</span> sentence.replace(<span class="string">&quot;播放&quot;</span>, <span class="string">&quot;放&quot;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">&quot;闹钟&quot;</span> <span class="keyword">in</span> sentence:</span><br><span class="line">        <span class="keyword">return</span> sentence.replace(<span class="string">&quot;闹钟&quot;</span>, <span class="string">&quot;提醒&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> sentence + <span class="string">&quot;。&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_contrastive_samples</span>(<span class="params">data, num_negatives=<span class="number">5</span></span>):</span><br><span class="line">    samples = []</span><br><span class="line">    all_sentences = []</span><br><span class="line">    <span class="keyword">for</span> intent, sentences <span class="keyword">in</span> data.items():</span><br><span class="line">        all_sentences.extend(sentences)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> anchor_intent, anchor_sentences <span class="keyword">in</span> data.items():</span><br><span class="line">        <span class="keyword">for</span> anchor_sentence <span class="keyword">in</span> anchor_sentences:</span><br><span class="line">            positive_sentence = get_positive_pair(anchor_sentence)</span><br><span class="line"></span><br><span class="line">            negative_sentences = []</span><br><span class="line">            <span class="comment"># 随机选择负样本，确保不是当前意图的句子</span></span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(negative_sentences) &lt; num_negatives:</span><br><span class="line">                neg_sentence = random.choice(all_sentences)</span><br><span class="line">                <span class="comment"># 确保负样本不属于当前anchor的意图，且不是anchor本身或其正样本</span></span><br><span class="line">                <span class="keyword">if</span> neg_sentence <span class="keyword">not</span> <span class="keyword">in</span> anchor_sentences <span class="keyword">and</span> neg_sentence != anchor_sentence <span class="keyword">and</span> neg_sentence != positive_sentence:</span><br><span class="line">                    negative_sentences.append(neg_sentence)</span><br><span class="line">            </span><br><span class="line">            samples.append(&#123;</span><br><span class="line">                <span class="string">&#x27;anchor&#x27;</span>: anchor_sentence,</span><br><span class="line">                <span class="string">&#x27;positive&#x27;</span>: positive_sentence,</span><br><span class="line">                <span class="string">&#x27;negatives&#x27;</span>: negative_sentences,</span><br><span class="line">                <span class="string">&#x27;intent&#x27;</span>: anchor_intent <span class="comment"># 记录意图，方便后续验证</span></span><br><span class="line">            &#125;)</span><br><span class="line">    <span class="keyword">return</span> samples</span><br><span class="line"></span><br><span class="line">contrastive_samples = generate_contrastive_samples(intent_data, num_negatives=<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;生成了 <span class="subst">&#123;<span class="built_in">len</span>(contrastive_samples)&#125;</span> 个对比样本对。&quot;</span>)</span><br><span class="line"><span class="comment"># print(contrastive_samples[0]) # 打印第一个样本看看结构</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 模拟对比学习训练过程</span></span><br><span class="line"><span class="comment"># 实际中，这会是一个迭代优化模型参数的过程，这里我们简化为直接计算嵌入并调整</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是一个概念性的“训练”步骤，我们不会真的去微调SentenceTransformer模型，</span></span><br><span class="line"><span class="comment"># 而是展示对比学习的损失函数思想。</span></span><br><span class="line"><span class="comment"># 实际的对比学习训练会涉及到更复杂的训练循环和优化器。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_contrastive_loss</span>(<span class="params">anchor_emb, positive_emb, negative_embs, margin=<span class="number">0.5</span></span>):</span><br><span class="line">    <span class="comment"># 计算anchor和positive之间的相似度</span></span><br><span class="line">    pos_sim = util.cos_sim(anchor_emb, positive_emb).item()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算anchor和所有negative之间的相似度</span></span><br><span class="line">    neg_sims = [util.cos_sim(anchor_emb, neg_emb).item() <span class="keyword">for</span> neg_emb <span class="keyword">in</span> negative_embs]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 简化版的Triplet Loss思想：</span></span><br><span class="line">    <span class="comment"># 希望 positive_sim &gt; negative_sim + margin</span></span><br><span class="line">    <span class="comment"># 损失函数目标是让 (negative_sim - positive_sim + margin) 尽可能小</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> neg_sim <span class="keyword">in</span> neg_sims:</span><br><span class="line">        loss += <span class="built_in">max</span>(<span class="number">0</span>, neg_sim - pos_sim + margin)</span><br><span class="line">    <span class="keyword">return</span> loss</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n--- 模拟训练过程 ---&quot;</span>)</span><br><span class="line">total_loss = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i, sample <span class="keyword">in</span> <span class="built_in">enumerate</span>(contrastive_samples):</span><br><span class="line">    anchor_emb = model.encode(sample[<span class="string">&#x27;anchor&#x27;</span>], convert_to_tensor=<span class="literal">True</span>)</span><br><span class="line">    positive_emb = model.encode(sample[<span class="string">&#x27;positive&#x27;</span>], convert_to_tensor=<span class="literal">True</span>)</span><br><span class="line">    negative_embs = [model.encode(neg, convert_to_tensor=<span class="literal">True</span>) <span class="keyword">for</span> neg <span class="keyword">in</span> sample[<span class="string">&#x27;negatives&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    loss = calculate_contrastive_loss(anchor_emb, positive_emb, negative_embs)</span><br><span class="line">    total_loss += loss</span><br><span class="line">    <span class="comment"># 实际训练中，这里会进行反向传播和参数更新</span></span><br><span class="line">    <span class="comment"># print(f&quot;样本 &#123;i+1&#125; (&#123;sample[&#x27;intent&#x27;]&#125;) 损失: &#123;loss:.4f&#125;&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;\n模拟训练完成。总概念损失: <span class="subst">&#123;total_loss:<span class="number">.4</span>f&#125;</span> (越小越好)&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;注意：这里只是概念性计算损失，SentenceTransformer模型本身并未真正微调。&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;实际对比学习训练会使用专门的损失函数（如InfoNCE Loss）和优化器来更新模型参数。&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 意图分类与“未知意图”检测</span></span><br><span class="line"><span class="comment"># 训练完成后，模型（这里是SentenceTransformer）已经学会了如何将句子映射到语义空间。</span></span><br><span class="line"><span class="comment"># 我们可以计算每个意图的“中心点”，然后用距离来判断新句子属于哪个意图，或者是否是“other”。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算每个意图的平均嵌入（中心点）</span></span><br><span class="line">intent_centers = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> intent, sentences <span class="keyword">in</span> intent_data.items():</span><br><span class="line">    embeddings = model.encode(sentences, convert_to_tensor=<span class="literal">True</span>)</span><br><span class="line">    intent_centers[intent] = torch.mean(embeddings, dim=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n--- 意图分类与未知意图检测 ---&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict_intent</span>(<span class="params">sentence, model, intent_centers, threshold=<span class="number">0.4</span></span>):</span><br><span class="line">    sentence_emb = model.encode(sentence, convert_to_tensor=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    max_similarity = -<span class="number">1</span></span><br><span class="line">    predicted_intent = <span class="string">&quot;other&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> intent, center_emb <span class="keyword">in</span> intent_centers.items():</span><br><span class="line">        similarity = util.cos_sim(sentence_emb, center_emb).item()</span><br><span class="line">        <span class="comment"># print(f&quot;  与 &#123;intent&#125; 相似度: &#123;similarity:.4f&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> similarity &gt; max_similarity:</span><br><span class="line">            max_similarity = similarity</span><br><span class="line">            predicted_intent = intent</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># 如果最高相似度低于阈值，则认为是“other”</span></span><br><span class="line">    <span class="keyword">if</span> max_similarity &lt; threshold:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;other&quot;</span>, max_similarity</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> predicted_intent, max_similarity</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试已知意图</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n测试已知意图句子：&quot;</span>)</span><br><span class="line">test_sentences_known = [</span><br><span class="line">    <span class="string">&quot;今天天气好吗？&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我想听流行音乐&quot;</span>,</span><br><span class="line">    <span class="string">&quot;早上六点叫我起床&quot;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> test_sentences_known:</span><br><span class="line">    intent, sim = predict_intent(s, model, intent_centers)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;句子: &#x27;<span class="subst">&#123;s&#125;</span>&#x27; -&gt; 预测意图: &#x27;<span class="subst">&#123;intent&#125;</span>&#x27; (相似度: <span class="subst">&#123;sim:<span class="number">.4</span>f&#125;</span>)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试“other”意图</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n测试未知意图句子：&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> other_data:</span><br><span class="line">    intent, sim = predict_intent(s, model, intent_centers)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;句子: &#x27;<span class="subst">&#123;s&#125;</span>&#x27; -&gt; 预测意图: &#x27;<span class="subst">&#123;intent&#125;</span>&#x27; (相似度: <span class="subst">&#123;sim:<span class="number">.4</span>f&#125;</span>)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调整阈值的影响</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n--- 调整阈值的影响 ---&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;尝试将阈值从0.4调整到0.6，看看对&#x27;other&#x27;判定的影响：&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> other_data:</span><br><span class="line">    intent, sim = predict_intent(s, model, intent_centers, threshold=<span class="number">0.6</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;句子: &#x27;<span class="subst">&#123;s&#125;</span>&#x27; -&gt; 预测意图: &#x27;<span class="subst">&#123;intent&#125;</span>&#x27; (相似度: <span class="subst">&#123;sim:<span class="number">.4</span>f&#125;</span>, 阈值=0.6)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;通过调整阈值，可以控制模型对&#x27;other&#x27;意图的敏感度。&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;阈值越高，模型越倾向于将不确定的句子判为&#x27;other&#x27;。&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;实际应用中，需要通过验证集来找到最佳阈值。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h3><ol>
+<li><strong>模拟数据集</strong>：我们创建了几个简单的意图类别和对应的句子，以及一些“other”的句子。在实际项目中，这些数据会来自您的真实语料库。</li>
+<li><strong>加载Sentence Transformer模型</strong>：<code>SentenceTransformer</code>是一个非常方便的库，它封装了BERT等预训练模型，可以直接将句子转换为固定长度的向量（Embedding）。这些向量捕捉了句子的语义信息，语义相似的句子会得到相似的向量。</li>
+<li><strong>数据增强与对比样本生成</strong>：<ul>
+<li><code>get_positive_pair</code>函数模拟了如何为一个句子生成一个“语义相似”的“好朋友”（正样本）。在真实场景中，这会是更复杂的数据增强技术，例如回译、同义词替换等。</li>
+<li><code>generate_contrastive_samples</code>函数为每个“原始句子”（Anchor）生成一个“好朋友”（Positive）和多个“无关的路人”（Negative）。这是对比学习训练的核心输入。</li>
+</ul>
+</li>
+<li><strong>模拟对比学习训练过程</strong>：<ul>
+<li><code>calculate_contrastive_loss</code>函数展示了对比学习损失函数的核心思想：让“原始句子”和“好朋友”的相似度高，和“路人”的相似度低。这里我们用了一个简化版的Triplet Loss思想。在实际的对比学习框架（如SimCSE、MoCo、SimCLR）中，会使用更复杂的损失函数（如InfoNCE Loss）来优化模型参数。</li>
+<li><strong>重要提示</strong>：在这个简化示例中，我们并没有真正地“训练”或“微调”<code>SentenceTransformer</code>模型。我们只是<strong>概念性地计算了损失</strong>，以展示对比学习的目标。在实际的对比学习训练中，这个损失值会用于反向传播，并更新<code>SentenceTransformer</code>模型内部的参数，使其真正学会将相似的句子拉近，不相似的句子推远。</li>
+</ul>
+</li>
+<li><strong>意图分类与“未知意图”检测</strong>：<ul>
+<li><strong>计算意图中心点</strong>：我们假设经过对比学习训练后，每个意图的句子在语义空间中会形成一个紧密的簇。我们可以计算每个意图所有句子的平均向量，作为该意图的“中心点”。</li>
+<li><strong><code>predict_intent</code>函数</strong>：当一个新的句子到来时，我们将其转换为向量，然后计算它与所有意图中心点的相似度（这里使用余弦相似度）。</li>
+<li><strong>阈值判断</strong>：如果一个句子的最高相似度（即它与最相似的已知意图的相似度）低于我们设定的<code>threshold</code>，那么我们就认为它不属于任何已知意图，将其归类为“other”。这个阈值的设定是识别“未知意图”的关键。</li>
+</ul>
+</li>
+</ol>
+<h3 id="如何运行代码"><a href="#如何运行代码" class="headerlink" title="如何运行代码"></a>如何运行代码</h3><p>您可以将上述Python代码保存为一个<code>.py</code>文件（例如<code>contrastive_intent.py</code>），然后在沙箱环境的终端中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python contrastive_intent.py</span><br></pre></td></tr></table></figure>
+
+<p>运行结果会展示模型如何根据相似度来判断句子的意图，以及如何通过调整阈值来控制“other”意图的识别。</p>
+<h3 id="进一步的思考与实践"><a href="#进一步的思考与实践" class="headerlink" title="进一步的思考与实践"></a>进一步的思考与实践</h3><ul>
+<li><strong>数据量</strong>：这个示例的数据量非常小。在实际应用中，您需要大量的意图数据和“other”数据来训练模型。</li>
+<li><strong>数据增强策略</strong>：数据增强是对比学习成功的关键。尝试不同的数据增强方法，例如回译、同义词替换、随机词语删除&#x2F;插入等，以生成高质量的正样本对。</li>
+<li><strong>负样本策略</strong>：负样本的选择也很重要。除了随机采样，还可以尝试“困难负样本挖掘”，即选择那些模型容易混淆的负样本进行训练，这能进一步提升模型的区分能力。</li>
+<li><strong>真正的对比学习框架</strong>：在生产环境中，您会使用像<code>Hugging Face Transformers</code>库结合<code>sentence-transformers</code>的<code>losses</code>模块（如<code>ContrastiveLoss</code>或<code>MultipleNegativesRankingLoss</code>）来构建和训练模型，或者使用更专业的对比学习框架（如<code>SimCSE</code>）。这些框架会处理模型参数的更新、优化器、学习率调度等细节。</li>
+<li><strong>阈值调优</strong>：<code>predict_intent</code>函数中的<code>threshold</code>参数是识别“other”意图的关键。您需要在一个包含已知意图和大量“other”意图的验证集上，通过实验来找到一个最佳的阈值，以平衡已知意图的准确率和“other”意图的召回率。</li>
+</ul>
+<p>通过这个示例，希望您能对对比学习在意图识别中的应用有一个更直观的理解。它的核心在于通过学习句子之间的相对关系，构建一个语义空间，从而能够有效地识别出那些不属于已知语义范畴的“未知意图”。</p>
+<hr>
+<blockquote>
+<p>如果你觉得本文有帮助，欢迎评论、点赞或关注我的博客！</p>
+</blockquote>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/07/09/py-for%E5%BE%AA%E7%8E%AF/"
+      title="Python for循环详解与高效用法"
+     >
+
+    <p class="title-text">
+      
+        Python for循环详解与高效用法
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Kouir Wu<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
